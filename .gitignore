@@ -1,0 +1,6 @@
+/dx/.sfdx
+.DS_Store
+createTemplateProject.sh
+*.profile*
+**/.vscode
+**/Security.settings*
