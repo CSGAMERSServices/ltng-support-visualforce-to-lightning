@@ -103,7 +103,11 @@ The manual steps below do the same as the shellscript.
 	// -d [[duration - in days]]
 	// -f /path/to/project-scratch-def.json
 	
-	sfdx force:org:create -a SOME_ALIAS -s -v lightningSupport -d 20 -f dx/config/project-scratch-def.json
+	sfdx force:org:create -d 20 -f dx/config/project-scratch-def.json -s -v [[your hub alias]] -a [[new alias for this scratch org]]
+	
+	ex:
+	
+	sfdx force:org:create -d 20 -f dx/config/project-scratch-def.json -s -v lightningSupport -a SOME_ALIAS
 	
 **6.** CLEANUP: Add `**.profiles` within dx/.forceignore, to ensure we do not track profiles (only permission sets)
 
@@ -187,7 +191,7 @@ sfdx force:user:display -u USERNAME
 	// -d [[duration - in days]]
 	// -f /path/to/project-scratch-def.json
 	
-	sfdx force:org:create -s -v lightningSupport -d 20 -f dx/config/project-scratch-def.json -a SOME_ALIAS
+	sfdx force:org:create -v lightningSupport -d 20 -f dx/config/project-scratch-def.json -s -a SOME_ALIAS
 
 
 # DELETE EVERYTHING ABOVE WHEN READY
