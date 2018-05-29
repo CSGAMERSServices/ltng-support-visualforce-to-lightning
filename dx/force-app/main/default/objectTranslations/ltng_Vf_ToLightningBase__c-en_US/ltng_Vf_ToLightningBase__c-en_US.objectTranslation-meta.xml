@@ -8,5 +8,10 @@
         <plural>true</plural>
         <value>VF to Lightning Bases</value>
     </caseValues>
+    <recordTypes>
+        <description><!-- Standard type of record --></description>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

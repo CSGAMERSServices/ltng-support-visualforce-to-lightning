@@ -10,7 +10,7 @@
     <formFactors>Large</formFactors>
     <label>Lightning to VF</label>
     <navType>Standard</navType>
-    <tabs>VF_to_Lightning_Setup</tabs>
+    <tabs>ltng_VF_toLightningSetup</tabs>
     <tabs>ltng_Vf_ToLightningBase__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Lightning_to_VF_UtilityBar</utilityBar>

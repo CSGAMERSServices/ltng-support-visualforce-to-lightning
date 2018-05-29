@@ -1,0 +1,72 @@
+<!--
+/**
+ * Component that sets up the URL Hack Demo.
+ * <p>Assigns permissionSets, creates objects, etc.</p>
+ * 
+ * @component: ltng_VF_toLightningSetup
+ **/
+-->
+<aura:component controller="ltng_VF_toLightningSetupCtrl"
+    implements="force:appHostable,flexipage:availableForAllPageTypes"
+    access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="isRunningSetup" type="Boolean" />
+    <aura:attribute name="completionSteps" type="Object[]" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- data -->
+    <!-- events -->
+    <!-- elements -->
+	<!-- show a spinner while everything loads -->
+
+    <lightning:layout verticalAlign="stretch" horizontalAlign="start"
+        multipleRows="true" pullToBoundary="small"
+    >
+        <!-- description -->
+        <lightning:layoutItem size="12" padding="around-small">
+            <div class="slds-box slds-theme_default slds-p-top_x-large slds-p-bottom_x-large">
+                <div class="slds-clearfix">
+                    <div class="install-description slds-float_left">
+                        <div class='slds-text-heading_medium'>Overview</div>
+                        <p>Run this setup to initialize the demo <br />
+                            (assign permission sets and create default objects).
+                        </p>
+                        <!--
+					    //- UNCOMMENT IF RecordTypes are used
+                        <div class='slds-text-heading_small slds-p-top_small'>Note - Please complete this small manual step</div>
+                        <p><a onclick='{! c.handlePermissionSetOpen }'>Add the 'Standard' record types to the PermissionSet.</a></p>
+                        <p>We are working to correct this issue.
+                            See <a href='https://github.com/SalesforceCloudServices/ltng-support-url-hack#add-the-missing-permissions-on-the-permission-set'>the installation steps</a> for more information - if desired.
+                        </p>
+						-->
+                    </div>
+                    <div class="slds-float_right slds-p-right_x-large">
+                        <p>Shall we begin?</p>
+                        <lightning:button variant="brand" label="Setup" onclick="{! c.handleSetupClicked }" />
+                    </div>
+                </div>
+            </div>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="12" padding="around-small">
+            <div class="slds-box slds-theme_default slds-p-top_large">
+                <ul class="slds-timeline">
+                    <aura:iteration items="{! v.completionSteps }" var="completionStep">
+                        <!-- @TODO: investigate simply sending the completion step instead -->
+                        <c:ltng_VF_toLightningSetupItem isComplete="{# completionStep.isComplete }"
+                            errMsg="{# completionStep.errMsg }"
+                            devErrMsg="{# completionStep.devErrMsg }"
+                            completionDate="{# completionStep.completionDate }"
+                            title="{# completionStep.title }"
+                            descr="{# completionStep.descr }"
+                            reasoning="{# completionStep.reasoning }"
+                            seeMore="{# completionStep.seeMore }"
+                            seeMoreLabel="{# completionStep.seeMoreLabel }"
+                        />
+                    </aura:iteration>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

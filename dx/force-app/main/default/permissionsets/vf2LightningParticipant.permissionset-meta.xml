@@ -6,6 +6,11 @@
     </applicationVisibilities>
     <description>Custom Permission set for VF to Lightning demo</description>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>ltng_Vf_ToLightningBase__c.Descr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>ltng_Vf_ToLightningBase__c.Example_Value__c</field>
         <readable>true</readable>
@@ -21,6 +26,10 @@
         <object>ltng_Vf_ToLightningBase__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <recordTypeVisibilities>
+        <recordType>ltng_Vf_ToLightningBase__c.Standard</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabSettings>
         <tab>ltng_VF_toLightningSetup</tab>
         <visibility>Visible</visibility>

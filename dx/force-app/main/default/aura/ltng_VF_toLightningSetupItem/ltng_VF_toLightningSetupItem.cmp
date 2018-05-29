@@ -1,0 +1,79 @@
+<!--
+/**
+ * Component that represents a single item to be completed during the setup
+ * @component: ltng_VF_toLightningSetupItem
+ **/
+-->
+<aura:component >
+    <!-- attributes -->
+    <aura:attribute name="isComplete" type="Boolean" />
+    <aura:attribute name="errMsg" type="String" />
+    <aura:attribute name="devErrMsg" type="String" />
+    <aura:attribute name="completionDate" type="String" />
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="descr" type="String" />
+    <aura:attribute name="reasoning" type="String" />
+    <aura:attribute name="seeMore" type="String" />
+    <aura:attribute name="seeMoreLabel" type="String" />
+    <!-- internal attributes -->
+    <aura:attribute name="iconName" type="String" access="private" />
+    <aura:attribute name="expanderClass" type="String" access="private" />
+    <aura:attribute name="timeLineClass" type="String" access="private" />
+    <aura:attribute name="isExpanded" type="boolean" default="false" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- events -->
+    <!-- elements -->
+    <li>
+        <div class="{! v.timeLineClass }">
+            <span class="slds-assistive-text">task</span>
+            <div class="slds-media" style="">
+            <div class="slds-media__figure">
+                <button class="{! v.expanderClass }"
+                    onclick="{! c.handleExpansionToggle }"
+                    title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base" aria-expanded="false"
+                >
+                    <lightning:icon iconName="utility:switch" size="x-small" class="slds-timeline__details-action-icon" />
+                </button>
+                <lightning:icon iconName="{! v.iconName }" size="small" />
+            </div>
+            <div class="slds-media__body">
+                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                        <h3 class="slds-truncate" title="{! v.title }">
+                            <a href="javascript:void(0);">
+                                <strong>{! v.title }</strong>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="slds-timeline__actions slds-timeline__actions_inline">
+                        <p class="slds-timeline__date">{! v.completionDate }</p>
+                    </div>
+                </div>
+                <p class="slds-m-horizontal_xx-small">{! v.descr }</p>
+                <aura:if isTrue="{! not(empty(v.errMsg)) }">
+                <div class="slds-grid slds-text-color_error slds-m-top_x-small slds-m-horizontal_xx_small" id="task-item-error">
+                    <lightning:icon iconName="utility:error" size="xx-small" />
+                    <p class="slds-m-left_x-small">{! v.errMsg }</p>
+                </div>
+                </aura:if>
+                <article class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small" id="task-item-base" aria-hidden="true">
+                    <aura:if isTrue="{! not(empty(v.reasoning)) }">
+                    <div>
+                        <span class="slds-text-title">Description</span>
+                        <p class="slds-p-top_x-small">{! v.reasoning }</p>
+                    </div>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{! not(empty(v.seeMore)) }">
+                    <div>
+                        <span class="slds-text-title">See More</span>
+                        <p><a onclick="{! c.handleSeeMoreClicked }">{! v.seeMoreLabel}</a></p>
+                    </div>
+                    </aura:if>
+                </article>
+            </div>
+            </div>
+        </div>
+    </li>
+</aura:component>
