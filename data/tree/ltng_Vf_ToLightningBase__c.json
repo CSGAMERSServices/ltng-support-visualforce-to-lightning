@@ -1,0 +1,11 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "ltng_Vf_ToLightningBase__c",
+                "referenceId": "ltng_Vf_ToLightningBase__cRef1"
+            },
+            "Example_Value__c": 1000
+        }
+    ]
+}
