@@ -6,7 +6,7 @@
  * @component: ltng_VF_toLightningSetup
  **/
 -->
-<aura:component controller="ltng_VF_toLightningSetupCtrl"
+<aura:component controller="ltng_LightningToVisualforceSetupCtrl"
     implements="force:appHostable,flexipage:availableForAllPageTypes"
     access="global"
 >
@@ -54,7 +54,7 @@
                 <ul class="slds-timeline">
                     <aura:iteration items="{! v.completionSteps }" var="completionStep">
                         <!-- @TODO: investigate simply sending the completion step instead -->
-                        <c:ltng_VF_toLightningSetupItem isComplete="{# completionStep.isComplete }"
+                        <c:ltng_LightningToVisualforceSetupItem isComplete="{# completionStep.isComplete }"
                             errMsg="{# completionStep.errMsg }"
                             devErrMsg="{# completionStep.devErrMsg }"
                             completionDate="{# completionStep.completionDate }"

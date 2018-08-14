@@ -1,5 +1,5 @@
 {
-    "orgName": "ltng-support-visualforce-to-lightning",
+    "orgName": "ltng-support-lightning-to-visualforce",
     "edition": "Developer",
     "orgPreferences" : {
         "enabled": ["S1DesktopEnabled"]

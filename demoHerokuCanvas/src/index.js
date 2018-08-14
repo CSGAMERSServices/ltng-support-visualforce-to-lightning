@@ -2,6 +2,14 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+//-- defined in the heroku configuration (if running on heroku)
+//-- or defined in the .bashrc file (if running locally)
+const CONSUMER_KEY = process.env.CONSUMER_KEY;
+const CONSUMER_SECRET = process.env.CONSUMER_SECRET;
+
+console.log(`consumer key[${CONSUMER_KEY}]`);
+console.log(`consumer secret[${CONSUMER_SECRET}]`);
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))

@@ -3,12 +3,12 @@
     <description>Setup for the HTML to VisualForce demo</description>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>ltng_VF_toLightningSetup</componentName>
+            <componentName>ltng_LightningToVisualforceSetup</componentName>
         </componentInstances>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>VF to Lightning Setup</masterLabel>
+    <masterLabel>Lightning to VF Setup</masterLabel>
     <template>
         <name>flexipage:defaultAppHomeTemplate</name>
     </template>

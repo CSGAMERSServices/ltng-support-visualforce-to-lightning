@@ -39,7 +39,7 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Demo_Lightning_to_Visualforce_Record_Base</content>
+        <content>ltng_DemoLightningToVisualforceRecordBase</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>

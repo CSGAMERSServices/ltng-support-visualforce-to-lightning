@@ -4,9 +4,9 @@
 /*
  * //-- CHANGE
  * //-- ensure the class name matches the name of the Setup page + CTRL
- * //-- ex: ltng_VF_toLightningSetupCtrl
+ * //-- ex: ltng_LightningToVisualforceSetupCtrl
  **/
-global with sharing class ltng_VF_toLightningSetupCtrl {
+global with sharing class ltng_LightningToVisualforceSetupCtrl {
 
     //-- static
 
@@ -15,10 +15,10 @@ global with sharing class ltng_VF_toLightningSetupCtrl {
     //-- CHANGE
     //-- UPDATE PERMISSION_SET_NAME to the Name of the permission set
     //-- UPDATE the Child Object Name to the durable id of the object
-    //--      ex: ltng_Vf_ToLightningBase__c is ltng_DependentPicklistBase
+    //--      ex: ltng_LightningToVisualforceBase__c is ltng_DependentPicklistBase
     //--      SELECT DeveloperName, DurableId FROM EntityDefinition WHERE DeveloperName = 'Object API Name'
-    global static final String PERMISSION_SET_NAME = 'vf2LightningParticipant';
-    global static final String CHILD_SOBJECT_NAME = 'ltng_Vf_ToLightningBase';
+    global static final String PERMISSION_SET_NAME = 'ltng_LightningToVisualforceDemoParticipant';
+    global static final String CHILD_SOBJECT_NAME = 'ltng_LightningToVisualforceBase';
 	
     //-- UPDATE: set the developer names of the record types you will use.
     //--     (remove properties if not used)
@@ -167,11 +167,11 @@ global with sharing class ltng_VF_toLightningSetupCtrl {
             return step;
         }
 
-        ltng_Vf_ToLightningBase__c[] recordsToDelete = null;
+        ltng_LightningToVisualforceBase__c[] recordsToDelete = null;
         try {
             recordsToDelete = [
                 SELECT Id
-                FROM ltng_Vf_ToLightningBase__c ltng_Vf_ToLightningBase__c
+                FROM ltng_LightningToVisualforceBase__c
             ];
             
             delete recordsToDelete;
@@ -192,16 +192,16 @@ global with sharing class ltng_VF_toLightningSetupCtrl {
     global static SetupStep createBaseRecords( boolean getInfoOnly ){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Create Base Objects',
-            'descr' => 'Url Hack Base - objects (ltng_Vf_ToLightningBase__c)',
-            'reasoning' => '(These are the objects you initiate the demo / URL Hack from)'
+            'descr' => 'LBase - objects (ltng_LightningToVisualforceBase__c)',
+            'reasoning' => '(These are the objects you initiate the demo)'
         });
 
         if(getInfoOnly){
             return step;
         }
 
-        //-- generated from data/trees/ltng_Vf_ToLightningBase__cs.json
-        ltng_Vf_ToLightningBase__c[] baseRecords = new ltng_Vf_ToLightningBase__c[]{};
+        //-- generated from data/trees/ltng_LightningToVisualforceBase__cs.json
+        ltng_LightningToVisualforceBase__c[] baseRecords = new ltng_LightningToVisualforceBase__c[]{};
 		
         //-- uncomment if different record types are needed
         /*
@@ -209,32 +209,32 @@ global with sharing class ltng_VF_toLightningSetupCtrl {
         for( RecordType rt : [
             SELECT Id, DeveloperName, Name, SObjectType
             FROM RecordType
-            WHERE SObjectType = 'ltng_Vf_ToLightningBase__c'
+            WHERE SObjectType = 'ltng_LightningToVisualforceBase__c'
         ]){
             recordTypeMap.put(rt.DeveloperName, rt.Id);
         }
 		*/
         
-        baseRecords.add( new ltng_Vf_ToLightningBase__c(
-            Example_Value__c = 1000
+        baseRecords.add( new ltng_LightningToVisualforceBase__c(
+            Value__c = 'Initial Value'
             //RecordTypeId = recordTypeMap.get(RT_STANDARD_NAME)
         ));
         
         /*
         //-- @TODO: replace these to create the records
-        baseRecords.add( new ltng_Vf_ToLightningBase__c(
+        baseRecords.add( new ltng_LightningToVisualforceBase__c(
             Name = 'Example Master',
             Descr__c = '<p>Example Master Record - only shows No Value and Valid Value.</p><p>(A and B variants are not shown)</p>',
             Level1__c = 'No Level 1',
             RecordTypeId = recordTypeMap.get(RT_STANDARD_NAME)
         ));
-        baseRecords.add( new ltng_Vf_ToLightningBase__c(
+        baseRecords.add( new ltng_LightningToVisualforceBase__c(
             Name = 'Example Type A',
             Descr__c = '<p>Example Type A Record - includes No Value, Valid Value and Type A variant.</p><p>(Does not show Type B variants)</p>',
             Level1__c = 'No Level 1',
             RecordTypeId = recordTypeMap.get(RT_TYPEA_Name)
         ));
-        baseRecords.add( new ltng_Vf_ToLightningBase__c(
+        baseRecords.add( new ltng_LightningToVisualforceBase__c(
             Name = 'Example Type B',
             Descr__c = '<p>Example Type B Record - includes No Value, Valid Value and Type B variant.</p><p>(Does not show Type A variants)</p>',
             Level1__c = 'No Level 1',

@@ -16,4 +16,12 @@
         <object>ltng_LightningToVisualforceBase__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <tabSettings>
+        <tab>ltng_LightningToVisualforceBase__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>ltng_LightningToVisualforceSetup</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>
