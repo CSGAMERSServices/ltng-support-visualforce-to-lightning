@@ -1,0 +1,112 @@
+<!--
+/** 
+ * Basic visualforce page WITH postmessages to communicate.
+ * <p>Note that when it changes a value, a postmessage is sent
+ *  and received by the VisualforceContainer
+ *  and then broadcast to all lightning components.</p>
+ * @page ltng_VisualforceWithPostMessage
+**/
+-->
+<apex:page standardController="ltng_LightningToVisualforceBase__c"
+	extensions="ltng_VisualforceWithoutPostMessageCtrl"
+>
+    <apex:includeScript value="{!URLFOR( $Resource.ltng_PostMessageResources,'/js/events/PostMessageEnvelope2.js' )}"/>
+    <script type='text/javascript'>
+    /**
+     * Called when the save completes.
+     **/
+    function handleSaveCompleted(){
+        console.info('Save Completed');
+        
+        var postMessage = new PostMessageEnvelope(
+            "ltng_VisualforceWithPostMessage", //-- page name
+            "saveComplete", //-- message type
+            true, //-- save completed
+            {
+                "auraId": "{!$CurrentPage.parameters.auraId}"
+            }
+        );
+        
+        postMessage.dispatch(window.parent);
+    }
+
+    /**
+     * Called to dispatch a lightning event from Visualforce
+     **/
+    function dispatchToastMessage(){
+        console.info('Save Completed');
+        
+        var postMessage = new PostMessageEnvelope(
+            "ltng_VisualforceWithPostMessage", //-- page name
+            "toast", //-- message type
+            true, //-- save completed
+            {
+                "auraId": "{!$CurrentPage.parameters.auraId}",
+                "message": "Hello from your Visualforce Page",
+                "title": "Message from VF"
+            }
+        );
+        
+        postMessage.dispatch(window.parent);
+    }
+
+    /**
+     * Sets up the listners for visualforce notifications.
+     **/
+    function setupPostMessageListeners(){
+        
+        window.postOffice = new PostMessageOffice(this);
+        
+        //-- handle the save complete
+        window.postOffice.addTypeHandler( 'saveComplete', $A.getCallback(function( myPostMessage ){
+            //-- now notify visualforce pages.
+            console.info('page heard that the saveComplete event was given');
+        }));
+        
+        window.postOffice.addTypeHandler( 'forceRefresh', $A.getCallback(function( myPostMessage ){
+            //-- now notify visualforce pages.
+            console.info('page heard that the forceRefresh event was given');        
+        }));
+        
+        window.postOffice.listenForPostEvents(window);
+    }
+
+    //-- call when the page is ready
+    setupPostMessageListeners();
+
+    </script>
+    <apex:outputPanel id="form">
+        <apex:pageBlock title="Current Values">
+            <apex:outputField value="{! ltng_LightningToVisualforceBase__c.Value__c }" />
+        </apex:pageBlock>
+    	<apex:form >
+            <!-- Action Functions
+			Action Functions and Remoting calls both
+			support detection that the save completed.
+			- We use this detection to dispatch the PostMessage
+			to the Lightning Experience, through the VisualforceContainer component
+			-->
+            <!--
+            <apex:actionFunction name="updateRecord" action="{!updateRecord}"
+            	onComplete="handleUpdateRecordCompleted(); return false"
+            />
+			-->
+            <apex:pageMessages />
+        	<apex:pageBlock title="Value Edit Form">
+                <apex:pageBlockSection columns="1">
+                    <apex:inputField value="{! ltng_LightningToVisualforceBase__c.Value__c }" />
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons >
+                	<apex:commandButton value="Save"
+                    	action="{!updateRecord}"
+                        onComplete="handleSaveCompleted(); return false;"
+                        reRender="form"
+                    />
+                    <apex:commandButton value="Send Lightning Event"
+                        onClick="dispatchToastMessage(); return false;"
+                    />
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:outputPanel>
+</apex:page>

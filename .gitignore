@@ -36,3 +36,4 @@ demoHerokuCanvas_/coverage/**/*
 demoHerokuCanvas_/sfdc/build.properties
 /demoHerokuCanvas/.bashrc
 
+/mdapi/src/lastRefresh.xml
