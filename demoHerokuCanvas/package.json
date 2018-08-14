@@ -1,21 +1,23 @@
 {
-  "name": "node-js-getting-started",
+  "name": "sample-heroku-canvas-nodejs",
   "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "description": "A sample Node.js app exposing a signed canvas app",
   "engines": {
     "node": "8.9.1"
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "node src/index.js",
+    "test": "node src/test.js"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "config": "^2.0.1",
     "ejs": "^2.5.6",
     "express": "^4.15.2"
   },
   "devDependencies": {
-    "request": "^2.81.0",
+    "request": "^2.88.0",
     "tape": "^4.7.0"
   },
   "repository": {
