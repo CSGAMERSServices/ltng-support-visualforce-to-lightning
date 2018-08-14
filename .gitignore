@@ -5,6 +5,11 @@ createTemplateProject.sh
 **/.vscode
 **/Security.settings*
 
+# old demos to merge in
+/dx/default_new
+VisualforceToLightning
+ant
+
 # local files
 demoHerokuCanvas_/.gitignore
 demoHerokuCanvas_/setupConfigVars.sh
@@ -30,6 +35,4 @@ demoHerokuCanvas_/coverage/**/*
 
 demoHerokuCanvas_/sfdc/build.properties
 /demoHerokuCanvas/.bashrc
-/dx/default_new
-VisualforceToLightning
 
