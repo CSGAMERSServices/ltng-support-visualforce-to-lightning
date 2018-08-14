@@ -4,8 +4,6 @@ createTemplateProject.sh
 *.profile*
 **/.vscode
 **/Security.settings*
-demoHerokuCanvas_old
-demoHerokuCanvas_old/**
 
 # local files
 demoHerokuCanvas_/.gitignore
