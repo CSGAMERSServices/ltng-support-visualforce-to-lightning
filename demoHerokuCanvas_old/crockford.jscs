@@ -1,0 +1,72 @@
+{
+    "requireCurlyBraces": [
+        "if",
+        "else",
+        "for",
+        "while",
+        "do",
+        "try",
+        "catch"
+    ],
+    "requireSpaceAfterKeywords": [
+        "if",
+        "else",
+        "for",
+        "while",
+        "do",
+        "switch",
+        "case",
+        "return",
+        "try",
+        "catch",
+        "function",
+        "typeof"
+    ],
+    "disallowSpaceBeforeBlockStatements": true,
+    "requireParenthesesAroundIIFE": true,
+    "requireSpacesInConditionalExpression": true,
+    "disallowSpacesInNamedFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
+    "disallowSpacesInFunctionDeclaration": {
+        "beforeOpeningRoundBrace": true
+    },
+    "requireSpaceBetweenArguments": true,
+    "requireMultipleVarDecl": "onevar",
+    "requireVarDeclFirst": true,
+    "requireBlocksOnNewline": true,
+    "disallowEmptyBlocks": true,
+    "disallowSpacesInsideArrayBrackets": true,
+    "disallowSpacesInsideParentheses": true,
+    "disallowDanglingUnderscores": true,
+    "requireCommaBeforeLineBreak": true,
+    "disallowSpaceAfterPrefixUnaryOperators": true,
+    "disallowSpaceBeforePostfixUnaryOperators": true,
+    "disallowSpaceBeforeBinaryOperators": [
+        ","
+    ],
+    "requireSpacesInForStatement": true,
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningRoundBrace": true,
+        "beforeOpeningCurlyBrace": true
+    },
+    "requireSpaceBeforeBinaryOperators": true,
+    "requireSpaceAfterBinaryOperators": true,
+    "disallowKeywords": [
+        "with",
+        "continue"
+    ],
+    "validateIndentation": { "value":"\t", "allExcept": ["comments","emptyLines"] },
+    "disallowMixedSpacesAndTabs": true,
+    "disallowTrailingWhitespace": "ignoreEmptyLines",
+    "disallowTrailingComma": true,
+    "disallowKeywordsOnNewLine": [
+        "else"
+    ],
+    "requireLineFeedAtFileEnd": true,
+    "requireCapitalizedConstructors": true,
+    "requireDotNotation": true,
+    "disallowNewlineBeforeBlockStatements": true,
+    "disallowMultipleLineStrings": true,
+    "requireSpaceBeforeObjectValues": true
+}

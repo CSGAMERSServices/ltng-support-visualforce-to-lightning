@@ -1,0 +1,115 @@
+<!--
+/**
+ * Popup page that allows for importing ticket scales
+ * Supports single or multiple ticket scales from this page
+ * @author Paul Roth <proth@salesforce.com>
+ * /apex/TEST_CanvasDemo?Id=a12R0000001hemUIAQ (eventdatetime)
+ **/
+-->
+<apex:page standardController="Test_Paul_Object__c"
+	sidebar="false" showHeader="false" standardStylesheets="false"
+>
+	<!-- PostMessage communicates between windows -->
+    <apex:includeScript value="{!URLFOR($Resource.LNE_GeneralResources,"js/events/LNE_PostMessage2.js")}" />
+    <!-- Used to simplify remoting calls -->
+    <apex:includeScript value="{!URLFOR($Resource.LNE_GeneralResources,"js/remoting/RemotingHelper.js")}" />
+    <!-- handles routing of PostMessages -->
+    <apex:includeScript value="{!URLFOR($Resource.LNE_GeneralResources,"js/events/LNE_MessagePostOffice.js")}" />
+
+    <!-- JQuery, not essential -->
+    <apex:includeScript value="{!URLFOR($Resource.LNE_GeneralResources,"js/lib/jquery-min.js")}" />
+    <!-- underscore, again not essential -->
+    <apex:includeScript value="{!URLFOR($Resource.LNE_GeneralResources,"js/lib/underscore.js")}" />
+    
+    <!-- canvas api -->
+    <!-- <script type="text/javascript" src="/canvas/sdk/js/39.0/canvas-all.js"></script> -->
+    <script type="text/javascript" src="/canvas/sdk/js/39.0/controller.js"></script>
+	
+	<script type='text/javascript'>
+		//-- all pages should have something similar to this - catches uncaught javascript issues.
+        window.onerror = function( errMsg, url, lineNumber ){
+            console.log( 'uncaught javascript exception found' );
+            debugger;
+            return( false );
+        }
+        
+        function onCanvasLoad(){
+        	console.log( 'oncanvasload' );
+        	//debugger;
+			
+			//-- listen for events sent from the canvas app.
+        	Sfdc.canvas.controller.subscribe({ name: "mynamespace.closeDialog", onData: function(e){
+        // 		console.log( 'event recieved' ); debugger;
+        		
+        		/*
+        		//-- note that the window.close is the functionality that is used.
+        		
+        		//-- the parent page monitors this window to close
+        		//-- so we close this window and the parent window knows to refresh
+        		
+        		var dataObj = {
+    				auraMessageType: "e.force:closeQuickAction",
+    				auraMessageData: {}
+        		};
+        		
+        		//-- refresh and visualforce refresh.
+        		//$A.get('e.force:refreshView').fire();
+        		var p = new LNE_PostMessage( 'canvasVF', 'saveComplete', true, {} );
+        		p.dispatch( window.parent );
+        		
+        		//$A.get("e.force:closeQuickAction").fire();
+        		var p2 = new LNE_PostMessage( 'canvasVF', 'closePopup', true, dataObj );
+        		p2.dispatch( window.parent );
+        		*/
+        		
+        		var p = new LNE_PostMessage( 'canvasVF', 'saveComplete', true, {} );
+        		p.dispatch( window.parent );
+
+        		//window.close();
+        	}});
+        	
+			function dispatchExampleAuraMessage( evtMessage ){
+			    console.log( 'dispatch example aura message' );
+			    
+			    var messageText=evtMessage;
+			    
+			    var pageName = 'canvasVF';
+				var isSuccessful = true;
+				
+				//-- some custom message type. Again, only saveComplete is special/recognized for now.
+				var messageType = 'showToast';
+	            
+				//-- send the data payload as an object with stuff to return.
+				//-- always include src as some unique identifier for the page
+				var data = {
+				    message: messageText,
+					auraId: '{!$CurrentPage.parameters.auraId}',
+					src: window.location.href
+				};
+				
+				//-- to make it work in Aura, we include the following
+				data.auraMessageType='e.force:showToast';
+				data.auraMessageData={'title': 'Toast Header', 'message':messageText };
+				
+				var postMessage = new LNE_PostMessage( pageName, messageType, isSuccessful, data );
+				
+				//-- works if in a grid overlay
+				postMessage.dispatch( parent );
+			}
+        	
+        	Sfdc.canvas.controller.subscribe({ name:"mynamespace.alert", onData: function(evt){
+        		console.log( 'alert recieved' );debugger;
+        		var evtMessage = "Click from heroku";
+        		if( evt && evt.message ){
+        			evtMessage += ":" + evt.message;
+        		}
+        		dispatchExampleAuraMessage( evtMessage );
+        	}});
+        };
+	</script>
+	<apex:canvasApp applicationName="TEST Canvas Demo"
+		namespacePrefix="" onCanvasAppLoad="onCanvasLoad"
+		height="600px" width="100%"
+		parameters="{ ptoId:'{! Test_Paul_Object__c.Id }' }"
+	/>
+</apex:page>

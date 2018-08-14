@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+    access="global"
+>
+    <!-- setup -->
+    <aura:attribute name="setupComplete" type='Boolean' default='false' access='public' />
+    <aura:attribute name="respondingAuraId" type="string" default="default" access="public" />
+    
+    <!-- scripts -->
+    <ltng:require scripts="{! join(',',
+            $Resource.LNE_GeneralResources+'/js/lightning/LNE_PostMessage.js',
+            $Resource.LNE_GeneralResources+'/js/lightning/LNE_MessagePostOffice.js'
+        )}"
+    	afterScriptsLoaded='{!c.handleScriptsLoaded}'
+    />
+    
+    <!-- handlers -->
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}' />	
+</aura:component>

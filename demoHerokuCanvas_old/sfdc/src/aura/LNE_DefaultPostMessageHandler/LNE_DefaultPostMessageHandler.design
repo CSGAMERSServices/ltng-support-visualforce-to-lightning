@@ -1,0 +1,3 @@
+<design:component label='General Post Message Handler'>
+    <design:attribute name='respondingAuraId' label='Responding Aura Id' default='default' />
+</design:component>

@@ -1,0 +1,33 @@
+<aura:documentation>
+	<aura:description>
+        Generic Post Message Handler Documentation
+    	<p>A component to listen for LNE_PostMessages.</p>
+        <p>This allows visualforce pages to communicate between one another within LEX.
+        	While also allowing VisualForce to communicate back and forth with LEX.</p>
+        
+        <p>This is meant to work in partnership/similar to the LNE_VisualforceContainer component.
+            The only time this is needed / used is only for visualforce pages exposed within LEX
+            that cannot be wrapped within a Lightning Component (such as within the detail page).
+        </p>
+        
+        <p>It provides
+        	<ul>
+                <li>Updates made in Visualforce can indicate standard UI to refresh</li>
+                <li>Visualforce to Lightning component communication</li>
+                <li>Visualforce pages within the same Lightning Page can communicate with one another.</li>
+            </ul>
+        </p>
+        
+        <p>The respondingAuraId parameter is the indicator that means that this component should respond.
+            This is used within the LNE_PostMessage by the data.auraId parameter sent when publishing the event.
+        </p>
+        
+        <code>
+            var data = {
+            	auraId:"default" //-- this must match the respondingAuraId of THIS component.
+            };
+            var postMessage = new LNE_PostMessage( 'LNE_MyPage', 'saveComplete', true, data );
+            postMessage.dispatch( window.parent );
+        </code>
+    </aura:description>
+</aura:documentation>

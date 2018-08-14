@@ -4,3 +4,30 @@ createTemplateProject.sh
 *.profile*
 **/.vscode
 **/Security.settings*
+demoHerokuCanvas_old
+demoHerokuCanvas_old/**
+
+# local files
+demoHerokuCanvas_/.gitignore
+demoHerokuCanvas_/setupConfigVars.sh
+
+# Node build artifacts
+demoHerokuCanvas_/node_modules
+demoHerokuCanvas_/npm-debug.log
+
+# Local development
+demoHerokuCanvas_/*.env
+demoHerokuCanvas_/*.dev
+demoHerokuCanvas_/**/.DS_Store
+**/.DS_Store
+
+# Docker
+demoHerokuCanvas_/Dockerfile
+demoHerokuCanvas_/docker-compose.yml
+demoHerokuCanvas_//grunt.log
+
+demoHerokuCanvas_/coverage
+demoHerokuCanvas_/coverage/*
+demoHerokuCanvas_/coverage/**/*
+
+demoHerokuCanvas_/sfdc/build.properties
