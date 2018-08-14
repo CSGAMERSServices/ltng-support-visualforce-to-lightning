@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canvasConfig>
+        <accessMethod>Post</accessMethod>
+        <canvasUrl>https://demo-nodejs-canvas-app.herokuapp.com/canvas</canvasUrl>
+        <locations>Chatter</locations>
+        <locations>Visualforce</locations>
+        <locations>Aura</locations>
+        <locations>Publisher</locations>
+        <locations>ChatterFeed</locations>
+        <locations>ServiceDesk</locations>
+        <locations>OpenCTI</locations>
+        <locations>MobileNav</locations>
+        <locations>PageLayout</locations>
+        <options>PersonalEnabled</options>
+        <samlInitiationMethod>None</samlInitiationMethod>
+    </canvasConfig>
+    <contactEmail>proth@salesforce.com</contactEmail>
+    <label>Demo Heroku NodeJS Canvas App</label>
+    <oauthConfig>
+        <callbackUrl>https://demo-nodejs-canvas-app.herokuapp.com/callback</callbackUrl>
+        <consumerKey>3MVG9U_dUptXGpYI4288SBcTP2XvnSK6_5BVO_kRIunfXFG0zIiDlH4dNmc6ltLVMcA6H1Pz4kIMJXn9z0dQh</consumerKey>
+        <scopes>Basic</scopes>
+    </oauthConfig>
+</ConnectedApp>

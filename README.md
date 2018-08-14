@@ -223,6 +223,85 @@ What_the_demo_demonstrates_and_why_we_care
 
 ---
 
+# Create Canvas App
+
+We have provided a sample canvas app, but to get the most out of this demo, you should create your own.
+
+**1.** Navigate to Setup (within Lightning Experience), and search for 'App Manager' (or navigate to Apps > App Manager)
+
+**2.** Select 'New Connected App'
+
+**3.** Set the following:
+
+<table>
+	<tr>
+		<th>Section</th>
+		<th>Setting</th>
+		<th>Example Value</th>
+		<th>Description</th>
+	</th>
+	<tr>
+		<td>Basic Information</td>
+		<td>Connected App Name</td>
+		<td>Demo Heroku NodeJS Canvas App</td>
+		<td>Human readable name for this app</td>
+	</tr>
+	<tr>
+		<td>Basic Information</td>
+		<td>API Name</td>
+		<td>ltng_DemoHerokuNodeJS_CanvasApp</td>
+		<td>The API name for this connected app</td>
+	</tr>
+	<tr>
+		<td>Basic Information</td>
+		<td>Contact Email</td>
+		<td>[[ Your Email Address ]]</td>
+		<td>Email that someone can contact if they have questions</td>
+	</tr>
+	<tr>
+		<td>API</td>
+		<td>Enable OAuth Settings</td>
+		<td>Checked</td>
+		<td>Allows for OAuth to be used</td>
+	</tr>
+	<tr>
+		<td>API</td>
+		<td>Callback URL</td>
+		<td>https://demo-nodejs-canvas-app.herokuapp.com/callback</td>
+		<td>URL for the oauth script to call (but only if not using the signed request form of canvas app - see below)</td>
+	</tr>
+	<tr>
+		<td>API</td>
+		<td>Selected OAuth Scopes</td>
+		<td>Access Your Basic Information</td>
+		<td>The types of requests someone using the canvas app can make. (Should be as restrictive as possible to avoid security concerns)</td>
+	</tr>
+	<tr>
+		<td>Canvas App Settings</td>
+		<td>Canvas</td>
+		<td>Checked</td>
+		<td>Supports Canvas Apps with this connected app</td>
+	</tr>
+	<tr>
+		<td>Canvas App Settings</td>
+		<td>Canvas App URL</td>
+		<td>https://demo-nodejs-canvas-app.herokuapp.com/canvas</td>
+		<td>URL that end user is navigated to when starting the canvas app. (if using signed request, this accepts the signed request - otherwise this is the first page they see post authentication/authoriziation)</td>
+	</tr>
+	<tr>
+		<td>Canvas App Settings</td>
+		<td>Access Method</td>
+		<td>Signed Request (POST)</td>
+		<td>The way the canvas app authenticates/authorizes the request. (We use Signed Request for this demo, but OAuth Webflow can also be used)</td>
+	</tr>
+	<tr>
+		<td>Canvas App Settings</td>
+		<td>Locations</td>
+		<td>Lightning Component</td>
+		<td>Where can this canvas app be called. (Many options available)</td>
+	</tr>
+</table>
+
 # Install
 
 There are three methods available for you to install this demo, so you can play around with it:

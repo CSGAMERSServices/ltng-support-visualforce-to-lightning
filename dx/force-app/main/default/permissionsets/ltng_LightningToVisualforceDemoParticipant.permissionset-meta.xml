@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>ltng_LightningToVisualforceDemo</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <description>Person that is participating in the Lightning to Visualforce demo</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Lightning To Visualforce Demo Participant</label>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>ltng_LightningToVisualforceBase__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+</PermissionSet>
