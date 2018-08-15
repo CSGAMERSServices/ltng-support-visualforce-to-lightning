@@ -38,14 +38,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>ltng_DemoLightningToVisualforceRecordBase</content>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>ltng_LightningToVisualforceBaseRecordDemo</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Custom</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Base object for demonstrating the problem and solutions for communicating between visualforce and lightning (and heroku among others)</description>
     <enableActivities>false</enableActivities>
@@ -54,7 +54,7 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>false</enableSharing>
     <enableStreamingApi>false</enableStreamingApi>
     <label>Lightning to Visualforce Base</label>
@@ -79,4 +79,10 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <compactLayouts>
+        <fullName>Custom</fullName>
+        <fields>Name</fields>
+        <fields>Value__c</fields>
+        <label>Custom</label>
+    </compactLayouts>
 </CustomObject>

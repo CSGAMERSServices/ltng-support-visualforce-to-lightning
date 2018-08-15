@@ -14,6 +14,7 @@
   <types>
     <name>ApexClass</name>
     <members>ltng_LightningToVisualforceSetupCtrl</members>
+    <members>ltng_VisualforceWithoutPostMessageCtrl</members>
   </types>
   <types>
     <name>ConnectedApp</name>
@@ -26,7 +27,7 @@
   </types>
   <types>
     <name>FlexiPage</name>
-    <members>ltng_DemoLightningToVisualforceRecordBase</members>
+    <members>ltng_LightningToVisualforceBaseRecordDemo</members>
     <members>ltng_LightningToVisualforceSetup</members>
   </types>
   <types>
@@ -34,8 +35,8 @@
     <members>ltng_LightningToVisualforceBase__c-Lightning to Visualforce Base Layout</members>
   </types>
   <types>
-    <name>CustomObjectTranslation</name>
-    <members>ltng_Vf_ToLightningBase__c-en_US</members>
+    <name>CompactLayout</name>
+    <members>ltng_LightningToVisualforceBase__c.Custom</members>
   </types>
   <types>
     <name>CustomField</name>
@@ -46,12 +47,22 @@
     <members>ltng_LightningToVisualforceBase__c</members>
   </types>
   <types>
+    <name>ApexPage</name>
+    <members>ltng_VisualforceStandardController</members>
+    <members>ltng_VisualforceWithPostMessage</members>
+    <members>ltng_VisualforceWithoutPostMessage</members>
+  </types>
+  <types>
     <name>PermissionSet</name>
     <members>ltng_LightningToVisualforceDemoParticipant</members>
   </types>
   <types>
     <name>QuickAction</name>
     <members>ltng_LightningToVisualforceBase__c.RelatedRecordQuickAction</members>
+  </types>
+  <types>
+    <name>StaticResource</name>
+    <members>ltng_PostMessageResources</members>
   </types>
   <types>
     <name>CustomTab</name>

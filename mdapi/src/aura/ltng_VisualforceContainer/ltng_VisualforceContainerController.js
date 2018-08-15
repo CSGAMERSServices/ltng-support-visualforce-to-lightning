@@ -1,9 +1,11 @@
 ({
+    //-- @TODO: include more code comments on how this can be called.
+    
 	/**
 	 *  Initialization event
 	 **/
     doInit : function(component, event, helper) {
-        console.log( 'LNE_VisualforceContainer inited');
+        console.log( 'ltng_VisualforceContainer inited');
         
         var pageName=component.get('v.pageName');
         var recordId=component.get('v.recordId');
@@ -29,7 +31,6 @@
      **/
     handleScriptsLoaded: function( component, event, helper ){
         console.log( 'handleScripts loaded attempted' );
-		//-- console.log( 'LNE_VisualforceContainer component finished loading all script/resources' );
 		helper.onetimeSetup(component, helper);
     }
     

@@ -1,4 +1,13 @@
 ({
+    //-- @TODO: include more code comments on how this can be called.
+
+    /**
+     *  Determines the SRC address for the Visualforce page.
+     *  @param pageName (String) - name of the visualforce page to load
+     *  @param recordid (String) - Salesforce id of the record.
+     *  @param urlArguments (String) - additional URL arguments to send
+     *  @param auraId (String) - the Aura id of this particular visualforce component.
+     */
     getPageSrc : function(pageName, recordId, urlArguments, auraId){
         var pageSrc='';
         
@@ -44,10 +53,10 @@
      **/
     setupPostMessageListeners: function(component, helper){
         
-        this.postOffice = new LNE_MessagePostOffice(this);
+        this.postOffice = new PostMessageOffice(this);
         
         //-- handle the save complete
-        this.postOffice.addTypeHandler( 'saveComplete', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'saveComplete', function( myPostMessage ){
             //-- now notify visualforce pages.
             var iFrameTarget=component.find( "targetFrame").getElement();
 
@@ -87,9 +96,9 @@
                     // });
                 }
             }
-        }));
+        });
         
-        this.postOffice.addTypeHandler( 'forceRefresh', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'forceRefresh', function( myPostMessage ){
             // $A.get('e.force:refreshView').fire();
             // component.find('hidden-refresh').getElement().dispatchEvent(new Event('click'));
             // $A.getCallback(function() {
@@ -100,10 +109,10 @@
             
         	var iFrameTarget = component.find( "targetFrame").getElement()
         	iFrameTarget.src = iFrameTarget.src;            
-        }));
+        });
 
         //-- handle opening a new tab
-        this.postOffice.addTypeHandler( 'openTab', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'openTab', function( myPostMessage ){
 
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
@@ -114,10 +123,10 @@
                 window.open(myPostMessage.data.src, '_blank');
 
             }
-        }));
+        });
 
         //-- toasts
-        this.postOffice.addTypeHandler( 'toast', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'toast', function( myPostMessage ){
 
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
@@ -138,10 +147,10 @@
 
             }
 
-        }));
+        });
         
         //-- handle any unknown types of events
-        this.postOffice.addTypeHandler( null, $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( null, function( myPostMessage ){
             //-- now notify visualforce pages.
             var iFrameTarget=component.find( "targetFrame").getElement();
             
@@ -169,7 +178,7 @@
             
             //-- tell the other pages.
             myPostMessage.dispatch( iFrameTarget.contentWindow );
-        }));
+        });
         
         this.postOffice.listenForPostEvents(window);
     }

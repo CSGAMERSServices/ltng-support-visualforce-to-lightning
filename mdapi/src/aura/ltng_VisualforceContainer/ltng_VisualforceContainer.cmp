@@ -22,8 +22,8 @@
     
     <!-- scripts -->
     <ltng:require scripts="{! join(',',
-            $Resource.LNE_GeneralResources+'/js/lightning/LNE_PostMessage.js',
-            $Resource.LNE_GeneralResources+'/js/lightning/LNE_MessagePostOffice.js'
+            $Resource.ltng_PostMessageResources+'/js/events/PostMessageEnvelope2.js',
+            $Resource.ltng_PostMessageResources+'/js/events/PostMessageOffice.js'
         )}"
     	afterScriptsLoaded='{!c.handleScriptsLoaded}'
     />

@@ -7,7 +7,7 @@
  *  @param function successHandler - always the first arguent
  *  @param function failureHandler - always the last argument
  **/
-this.remotingHelper = function(){
+function remotingHelper(){
 	var remotingArguments = _.union(arguments);
 	try {
 		var remotingFunctionName = remotingArguments.shift();

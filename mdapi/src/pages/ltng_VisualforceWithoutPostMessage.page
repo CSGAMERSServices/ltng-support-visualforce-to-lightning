@@ -1,0 +1,28 @@
+<!--
+/** 
+ * Basic visualforce page without any postmessages to communicate.
+ * <p>Note that when it changes a value, the standard value is out of sync
+ *   until the standard page is refreshed.</p>
+ * @page ltng_VisualforceWithoutPostMessage
+**/
+-->
+<apex:page standardController="ltng_LightningToVisualforceBase__c"
+	extensions="ltng_VisualforceWithoutPostMessageCtrl"
+>
+    <apex:outputPanel id="form">
+        <apex:pageBlock title="Current Values">
+            <apex:outputField value="{! ltng_LightningToVisualforceBase__c.Value__c }" />
+        </apex:pageBlock>
+    	<apex:form >
+            <apex:pageMessages />
+        	<apex:pageBlock title="Value Edit Form">
+                <apex:pageBlockSection columns="1">
+                    <apex:inputField value="{! ltng_LightningToVisualforceBase__c.Value__c }" />
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons >
+                	<apex:commandButton action="{!updateRecord}" value="Save"/>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:outputPanel>
+</apex:page>
