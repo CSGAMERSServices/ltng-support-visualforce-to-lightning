@@ -34,8 +34,8 @@ this.PostMessageEnvelope.prototype.dispatch = function( targetWindow, targetDoma
 		targetDomain = '*';
 	}
 	var dataStr = "";
-	var payload = { sender: this.sender, messageType: this.messageType, isSuccessful: this.isSuccessful, data: this.data };
-	var payloadStr = JSON.stringify( payload );
+	var dataClone = JSON.parse(JSON.stringify(this.data));
+	var payload = { sender: this.sender, messageType: this.messageType, isSuccessful: this.isSuccessful, data: dataClone };
 	targetWindow.postMessage( payload, targetDomain );
 };
 	
