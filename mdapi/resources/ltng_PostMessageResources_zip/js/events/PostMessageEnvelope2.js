@@ -98,8 +98,6 @@ this.PostMessageEnvelope.prototype.parse = function( evt ){
 		this.messageType = evt.data.messageType;
 		this.isSuccessful = evt.data.isSuccessful;
 		this.data = evt.data.data;
-		
-		//PostMessageEnvelope.import( evt.data );
 	} catch( err ){
 		//console.error( "unable to parse payload" );
 		//console.error( err );

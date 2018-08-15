@@ -14,20 +14,31 @@
     <apex:includeScript value="{!URLFOR( $Resource.ltng_PostMessageResources,'/js/events/PostMessageOffice.js' )}"/>
     <script type='text/javascript'>
     /**
-     * Called when the save completes.
+     * Called from the 'onComplete' from the commandButton action.
      **/
     function handleSaveCompleted(){
         console.info('Save Completed');
         
+        //-- simple library that can be used in lightning experience / vf / heroku / etc.
+        //-- new PostMessageEnvelope(
+        //--    @param originatingPageName:String - identifier to know which page made the request
+        //--    @param methodName:String - messageType sent (must match the type accepted on the PostMessageOffice handlers)
+        //--    @param isSuccessful (Boolean) - whether the action was successful or not
+        //--    @param payload (Object) - the object to pass as the `data`
+        //-- )
+        //-- the ltngVisualforceContainer lightning component then accepts it
+
         var postMessage = new PostMessageEnvelope(
             "ltng_VisualforceWithPostMessage", //-- page name
             "saveComplete", //-- message type
             true, //-- save completed
             {
-                "auraId": "{!$CurrentPage.parameters.auraId}"
+                "auraId": "{!$CurrentPage.parameters.auraId}" //-- pass auraId if we want other tabs to know when to refresh
             }
         );
         
+        //-- tell the postMessage to dispatch
+        //-- postMessage.dispatch( targetWindow:window );
         postMessage.dispatch(window.parent);
     }
 
@@ -37,6 +48,15 @@
     function dispatchToastMessage(){
         console.info('Save Completed');
         
+        //-- simple library that can be used in lightning experience / vf / heroku / etc.
+        //-- new PostMessageEnvelope(
+        //--    @param originatingPageName:String - identifier to know which page made the request
+        //--    @param methodName:String - messageType sent (must match the type accepted on the PostMessageOffice handlers)
+        //--    @param isSuccessful (Boolean) - whether the action was successful or not
+        //--    @param payload (Object) - the object to pass as the `data`
+        //-- )
+        //-- the ltngVisualforceContainer lightning component then accepts it
+
         var postMessage = new PostMessageEnvelope(
             "ltng_VisualforceWithPostMessage", //-- page name
             "toast", //-- message type
@@ -56,19 +76,37 @@
      **/
     function setupPostMessageListeners(){
         
+        //-- create a PostMessageOffice
+        //-- this allows us to accept postMessages dispatched to this window.
+        //-- new PostMessageOffice(
+        //--    @param targetScope:Object - the scope to use as 'this' in the handlers
+        //-- )
         window.postOffice = new PostMessageOffice(this);
         
         //-- handle the save complete
+        //-- register a handler to run when receiving a 'saveComplete' postMessage
+        //-- addTypeHandler(
+        //--    @param messageType:String - the messageType this handler should run for
+        //-- )
         window.postOffice.addTypeHandler( 'saveComplete', function( myPostMessage ){
             //-- now notify visualforce pages.
             console.info('page heard that the saveComplete event was given');
         });
         
+        //-- handle the save complete
+        //-- register a handler to run when receiving a 'forceRefresh' postMessage
+        //-- addTypeHandler(
+        //--    @param messageType:String - the messageType this handler should run for
+        //-- )
         window.postOffice.addTypeHandler( 'forceRefresh', function( myPostMessage ){
             //-- now notify visualforce pages.
             console.info('page heard that the forceRefresh event was given');        
         });
         
+        //-- direct the PostMessageOffice to listen for postMessages for a given window
+        //-- listenForPostEvents(
+        //--    @param targetWindow:Window - window to listen for postMessages on
+        //-- )
         window.postOffice.listenForPostEvents(window);
     }
 

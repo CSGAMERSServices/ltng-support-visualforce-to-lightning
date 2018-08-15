@@ -20,6 +20,11 @@
                     <apex:inputField value="{! ltng_LightningToVisualforceBase__c.Value__c }" />
                 </apex:pageBlockSection>
                 <apex:pageBlockButtons >
+                    <!-- 
+                        updateRecord will use a custom controller extension to save
+                        so it will not force the entire page to reset...
+                        BUT the standard and other visualforce pages will not be in sync.
+                    -->
                 	<apex:commandButton action="{!updateRecord}" value="Save"/>
                 </apex:pageBlockButtons>
             </apex:pageBlock>

@@ -19,6 +19,11 @@
                     <apex:inputField value="{! ltng_LightningToVisualforceBase__c.Value__c }" />
                 </apex:pageBlockSection>
                 <apex:pageBlockButtons >
+                    <!-- use the standardController save
+                        https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/apex_ApexPages_StandardController_methods.htm
+                        note that this automatically will cause the page to refresh
+                        so everything will be reset (or any unsaved changes lost)
+                    -->
                 	<apex:commandButton action="{!save}" value="Save"/>
                 </apex:pageBlockButtons>
             </apex:pageBlock>
