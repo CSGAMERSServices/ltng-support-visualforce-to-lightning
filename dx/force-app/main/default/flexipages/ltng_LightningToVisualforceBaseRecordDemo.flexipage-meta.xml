@@ -131,6 +131,28 @@ to then dispatch a &lt;a href=&quot;https://developer.salesforce.com/docs/compon
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>debug</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>600</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>ltng_VisualforceWithPostMessage</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>urlArguments</name>
+            </componentInstanceProperties>
+            <componentName>ltng_VisualforceContainer</componentName>
+        </componentInstances>
+        <name>Facet-a0f5d1c4-2ad5-4ad1-88cb-0563f2855d66</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>body</name>
                 <value>Facet-ded339c7-2bea-444d-aafd-3da5a0ce1566</value>
             </componentInstanceProperties>
@@ -166,6 +188,17 @@ to then dispatch a &lt;a href=&quot;https://developer.salesforce.com/docs/compon
             <componentInstanceProperties>
                 <name>body</name>
                 <value>Facet-fa7a3b5e-ab1d-4802-9b94-85bd3a285497</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>VF PostMessage</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-a0f5d1c4-2ad5-4ad1-88cb-0563f2855d66</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>

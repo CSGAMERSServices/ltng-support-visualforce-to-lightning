@@ -56,7 +56,7 @@
         this.postOffice = new PostMessageOffice(this);
         
         //-- handle the save complete
-        this.postOffice.addTypeHandler( 'saveComplete', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'saveComplete', function( myPostMessage ){
             //-- now notify visualforce pages.
             var iFrameTarget=component.find( "targetFrame").getElement();
 
@@ -72,7 +72,7 @@
                     // fake click button
                     
                 	//-- tell the other pages
-                	//myPostMessage.dispatch( iFrameTarget.contentWindow );
+                	myPostMessage.dispatch( iFrameTarget.contentWindow );
                     
                     var btn0 = component.find("refresh-button");
                     if (btn0) {
@@ -96,9 +96,9 @@
                     // });
                 }
             }
-        }));
+        });
         
-        this.postOffice.addTypeHandler( 'forceRefresh', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'forceRefresh', function( myPostMessage ){
             // $A.get('e.force:refreshView').fire();
             // component.find('hidden-refresh').getElement().dispatchEvent(new Event('click'));
             // $A.getCallback(function() {
@@ -109,10 +109,10 @@
             
         	var iFrameTarget = component.find( "targetFrame").getElement()
         	iFrameTarget.src = iFrameTarget.src;            
-        }));
+        });
 
         //-- handle opening a new tab
-        this.postOffice.addTypeHandler( 'openTab', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'openTab', function( myPostMessage ){
 
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
@@ -123,10 +123,10 @@
                 window.open(myPostMessage.data.src, '_blank');
 
             }
-        }));
+        });
 
         //-- toasts
-        this.postOffice.addTypeHandler( 'toast', $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'toast', function( myPostMessage ){
 
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
@@ -147,10 +147,10 @@
 
             }
 
-        }));
+        });
         
         //-- handle any unknown types of events
-        this.postOffice.addTypeHandler( null, $A.getCallback(function( myPostMessage ){
+        this.postOffice.addTypeHandler( null, function( myPostMessage ){
             //-- now notify visualforce pages.
             var iFrameTarget=component.find( "targetFrame").getElement();
             
@@ -178,7 +178,7 @@
             
             //-- tell the other pages.
             myPostMessage.dispatch( iFrameTarget.contentWindow );
-        }));
+        });
         
         this.postOffice.listenForPostEvents(window);
     }

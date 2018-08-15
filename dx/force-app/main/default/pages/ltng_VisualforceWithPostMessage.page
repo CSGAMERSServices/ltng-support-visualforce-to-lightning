@@ -11,6 +11,7 @@
 	extensions="ltng_VisualforceWithoutPostMessageCtrl"
 >
     <apex:includeScript value="{!URLFOR( $Resource.ltng_PostMessageResources,'/js/events/PostMessageEnvelope2.js' )}"/>
+    <apex:includeScript value="{!URLFOR( $Resource.ltng_PostMessageResources,'/js/events/PostMessageOffice.js' )}"/>
     <script type='text/javascript'>
     /**
      * Called when the save completes.
@@ -58,15 +59,15 @@
         window.postOffice = new PostMessageOffice(this);
         
         //-- handle the save complete
-        window.postOffice.addTypeHandler( 'saveComplete', $A.getCallback(function( myPostMessage ){
+        window.postOffice.addTypeHandler( 'saveComplete', function( myPostMessage ){
             //-- now notify visualforce pages.
             console.info('page heard that the saveComplete event was given');
-        }));
+        });
         
-        window.postOffice.addTypeHandler( 'forceRefresh', $A.getCallback(function( myPostMessage ){
+        window.postOffice.addTypeHandler( 'forceRefresh', function( myPostMessage ){
             //-- now notify visualforce pages.
             console.info('page heard that the forceRefresh event was given');        
-        }));
+        });
         
         window.postOffice.listenForPostEvents(window);
     }
