@@ -1,0 +1,21 @@
+{
+	"extends": "airbnb-base",
+	"rules": {
+		//-- development rules
+		"no-console": ["off"],
+		"no-unused-vars": ["off"],
+		//-- production rules
+		"no-trailing-spaces": ["error", { "skipBlankLines": true, "ignoreComments": true }],
+		"spaced-comment": ["error", "always", {
+			"line": {
+				"markers": ["--"]
+			},
+			"block": {
+				"markers": ["!"],
+				"exceptions": ["*"],
+				"balanced": true
+			}
+		}],
+		"import/no-extraneous-dependencies": ["off"]
+	}
+}
