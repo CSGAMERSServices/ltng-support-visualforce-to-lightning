@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example connect page</title>
+	<% include ../partials/lightningHeaders.ejs %>
+</head>
+
+<body>
+
+<script type='text/javascript'>
+	
+	jsf = null;
+	
+	client = <%- JSON.stringify( USER_INFO.client ) %>;
+	
+	Sfdc.canvas( function(){
+		var loggedIn = Sfdc.canvas.oauth.loggedin();
+		var token = "<%= TOKEN %>";
+		var msgIn = Sfdc.canvas.byId( "msgIn" );
+		var userInfo = <%- JSON.stringify( USER_INFO ) %>;
+		var closeBtn = Sfdc.canvas.byId( "closeBtn" );
+		var userInfoContext = Sfdc.canvas.byId( "userInfoContext" );
+		
+		//debugger;
+		
+		try {
+			userInfoContext.value = JSON.stringify( userInfo, null, 4 );
+		} catch( err ){
+			console.error( "unable to set user info context" ); console.error( err );
+		}
+
+		jsf = new jsforce.Connection({
+			sessionId: "<%= TOKEN %>",
+			serverUrl: "<%= INSTANCE_URL %>"
+		});
+		
+		jsf.query ("select id, name from account limit 1", function( err, records ){
+			console.log( "query returned" );
+			if( !err ){
+				console.log( records );
+			}
+			debugger;
+		});
+		
+		closeBtn.onclick = function( evt ){
+			console.log( 'closeBtn called' );debugger;
+			Sfdc.canvas.client.publish( client, { name:"mynamespace.closeDialog", payload: { status:"SUCCESS" }});
+		}
+		
+		msgIn.setAttribute( "value", "<%= SIGNED_REQUEST %>" );
+	});
+</script>
+
+<!--
+taken from
+https://developer.salesforce.com/docs/atlas.en-us.platform_connect.meta/platform_connect/canvas_app_oauth_code_example.htm
+jsf
+https://jsforce.github.io/document/
+-->
+
+<div class='rome-lds'>
+	<h1>Hey <%= USERNAME %></h1>
+	<div class='datatable' style='padding:10px;'>
+		<table class='slds-table slds-table--bordered slds-table--cell-buffer'>
+			<thead>
+				<tr class='slds-txt-title--caps'>
+					<th scope='col'>
+						<div class='slds-truncate' title='Name'>Name</div>
+					</th>
+					<th scope='col'>
+						<div class='slds-truncate' title='Value'>Value</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>userName</td><td><%= USER_INFO.context.user.userName %></td>
+				</tr>
+				<tr>
+					<td>email</td><td><%= USER_INFO.context.user.email %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class='slds-form--stacked'>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-01">Your signed request</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="msgIn" class="slds-input" placeholder="Message goes here" />
+			</div>
+		</div>
+		<div class='slds-form-element'>
+			<label class="slds-form-element__label" for="text-input-01">Signed Request Contents</label>
+			<div class="slds-form-element__control">
+				<textarea id='userInfoContext' class='slds-textarea' style='height:300px' ></textarea>
+			</div>
+		</div>
+		<div class='slds-form-element'>
+			<button id='closeBtn' type='button' class='slds-button slds-button--brand'>Close</button>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Full page demo for a Bootstrap Container</description>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>containerSize</name>
+                <value>800</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>helloName</name>
+                <value>Hello, from Lightning</value>
+            </componentInstanceProperties>
+            <componentName>ltng_BootstrapContainer</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Full Page Container Demo</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

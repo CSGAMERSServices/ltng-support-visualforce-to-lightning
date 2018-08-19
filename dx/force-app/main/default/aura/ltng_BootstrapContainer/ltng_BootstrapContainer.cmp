@@ -1,0 +1,32 @@
+<!--
+/**
+ * Container for a bootstrap application
+ * @component ltng_BootstrapContainer
+ implements="force:appHostable,flexipage:availableForAllPageTypes"
+ **/
+-->
+<aura:component implements="flexipage:availableForAllPageTypes"
+    access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="helloName" type="String" />
+    <aura:attribute name="containerSize" type="Integer" />
+    <aura:attribute name="containerSizeCode" type="String" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- elements -->
+    <!-- @kludge: need to investigate iframe sizing. set explicit for now -->
+    <div style='{! v.containerSizeCode }'>
+        <div class='slds-box slds-theme_default slds-m-bottom_medium'>
+            <form class="slds-form--inline">
+                <lightning:input name="newName" value="{!v.helloName}" label="New Name" />
+                <lightning:button label='Send' onclick='{!c.sendMessage}' />
+            </form>
+        </div>
+        <lightning:container aura:id="bootstrapApp"
+            src="{!$Resource.ltng_bootstrap_4_1_0 + '/index.html?helloName=' + v.helloName}"
+            onmessage="{!c.handleMessage}"
+            onerror="{!c.handleError}"
+        />
+    </div>
+</aura:component>

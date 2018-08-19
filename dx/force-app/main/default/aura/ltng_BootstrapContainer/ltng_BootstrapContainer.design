@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="helloName" label="Hello Name" default="World" />
+    <design:attribute name="containerSize" label="Container Size" default="250" />
+</design:component>
