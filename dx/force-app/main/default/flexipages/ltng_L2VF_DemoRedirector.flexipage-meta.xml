@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Redirects to the first record of the Lightning to VF Demo Base Record</description>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>ltng_LightningToVF_BaseRedirector</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>L2VF Demo Redirector</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>
