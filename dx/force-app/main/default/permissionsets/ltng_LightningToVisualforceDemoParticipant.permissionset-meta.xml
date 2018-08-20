@@ -17,11 +17,15 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
-        <tab>L2VF_Demo_Redirector</tab>
+        <tab>ltng_L2VF_DemoRedirector</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
         <tab>ltng_ContainerComponentDemo</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>ltng_LightningToCanvas</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
