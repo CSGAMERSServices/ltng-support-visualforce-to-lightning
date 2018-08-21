@@ -12,9 +12,10 @@
     <navType>Standard</navType>
     <tabs>ltng_LightningToVisualforceSetup</tabs>
     <tabs>ltng_L2VF_DemoRedirector</tabs>
+    <tabs>Lightning_to_VF_to_Heroku</tabs>
     <tabs>ltng_LightningToCanvas</tabs>
     <tabs>ltng_LightningToVisualforceBase__c</tabs>
-    <tabs>ltng_FullPageContainerDemo</tabs>
     <tabs>ltng_ContainerComponentDemo</tabs>
+    <tabs>ltng_FullPageContainerDemo</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

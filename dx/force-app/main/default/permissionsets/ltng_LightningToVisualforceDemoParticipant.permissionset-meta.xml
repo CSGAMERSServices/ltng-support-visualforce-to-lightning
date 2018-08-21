@@ -17,7 +17,7 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
-        <tab>ltng_L2VF_DemoRedirector</tab>
+        <tab>ltng_LightningToVF_ToHeroku</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
@@ -25,11 +25,15 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>ltng_LightningToCanvas</tab>
+        <tab>ltng_FullPageContainerDemo</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>ltng_FullPageContainerDemo</tab>
+        <tab>ltng_L2VF_DemoRedirector</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>ltng_LightningToCanvas</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
