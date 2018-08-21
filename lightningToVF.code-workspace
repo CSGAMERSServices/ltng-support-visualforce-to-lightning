@@ -7,7 +7,7 @@
 			"path": "."
 		},
 		{
-			"path": "../demo-nodejs-canvas-app"
+			"path": "../ltng-support-visualforce-to-lightning-canvas"
 		}
 	],
 	"settings": {
