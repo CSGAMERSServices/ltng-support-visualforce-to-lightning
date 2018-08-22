@@ -4,18 +4,17 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>cmpHeight</name>
-                <value>0</value>
+                <name>decorate</name>
+                <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>placeholderText</name>
-                <value>Header</value>
+                <name>richTextValue</name>
+                <value>&lt;b&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Bootstrap App with traditional web standards in &lt;a href=&quot;https://developer.salesforce.com/blogs/2018/04/lightning-container-component-building-components-with-react-angular-and-other-libraries.html&quot;&gt;Lightning:Container&lt;/a&gt;&lt;/span&gt;&lt;/b&gt;&lt;br /&gt;
+While this app uses Bootstrap, other frameworks like Angular, React etc. will work in a similar manner.&lt;br /&gt;
+The html, css, javaScript files are applied into a Static Resource and referenced using Lightning Container.&lt;br /&gt;
+Events are then dispatched and listened for using the &lt;a href=&quot;https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/container_api_reference.htm&quot;&gt;Lightning-Container NPM module.&lt;/a&gt;</value>
             </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>theme</name>
-                <value>default</value>
-            </componentInstanceProperties>
-            <componentName>ltng_ResponsivePlaceholder</componentName>
+            <componentName>flexipage:richText</componentName>
         </componentInstances>
         <name>region1</name>
         <type>Region</type>

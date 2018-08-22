@@ -4,6 +4,17 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;b&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Full Page &lt;a href=&quot;https://developer.salesforce.com/blogs/2018/04/lightning-container-component-building-components-with-react-angular-and-other-libraries.html&quot;&gt;Lightning:Container&lt;/a&gt; Example&lt;/span&gt;&lt;/b&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>containerSize</name>
                 <value>800</value>
             </componentInstanceProperties>

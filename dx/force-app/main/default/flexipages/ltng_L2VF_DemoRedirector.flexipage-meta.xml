@@ -3,6 +3,18 @@
     <description>Redirects to the first record of the Lightning to VF Demo Base Record</description>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;b&gt;Redirects to a Base Record&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
+(Setup must be run beforehand)</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
             <componentName>ltng_LightningToVF_BaseRedirector</componentName>
         </componentInstances>
         <name>main</name>
