@@ -126,7 +126,7 @@
         });
 
         //-- toasts
-        this.postOffice.addTypeHandler( 'toast', function( myPostMessage ){
+        this.postOffice.addTypeHandler( 'showToast', function( myPostMessage ){
 
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
