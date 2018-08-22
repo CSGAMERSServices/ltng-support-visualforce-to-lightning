@@ -28,7 +28,7 @@ Sometimes it isn&amp;#39;t helpful to immediately refresh the other tabs.&lt;br 
 We can send the aura:id to the visualforce page,&lt;br /&gt;
 so when they send the message - we can tell which sent it and which didn&amp;#39;t&lt;br /&gt;
 (and let the user choose when to refresh if another tab saved)&lt;br /&gt;
-&lt;b&gt;... Go ahead save on the VF PostMessage tab.&lt;/b&gt;</value>
+&lt;b&gt;... Go ahead and save a change on the VF PostMessage tab - and come back here.&lt;/b&gt;</value>
             </componentInstanceProperties>
             <componentName>flexipage:richText</componentName>
         </componentInstances>
