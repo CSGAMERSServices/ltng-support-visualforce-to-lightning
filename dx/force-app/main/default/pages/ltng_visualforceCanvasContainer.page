@@ -130,7 +130,7 @@
     </script>
     <apex:canvasApp applicationName="ltng_DemoHerokuNodeJS_CanvasApp"
         namespacePrefix="" onCanvasAppLoad="onCanvasLoad"
-        height="600px" width="100%"
+        height="800px" width="100%"
         parameters="{}"
     />
 </apex:page>
