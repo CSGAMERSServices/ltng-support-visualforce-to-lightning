@@ -30,7 +30,7 @@
      **/
     onetimeSetup: function( component, helper){
         //-- only setup an event listener once for this component.
-        console.log( 'onetimeSetup attempted' );
+        console.log( 'VisualForceContainer onetimeSetup' );
         
         var didRun=false;
         
@@ -44,7 +44,6 @@
             didRun=true;
         }
         
-        console.log( 'onetimeSetup completed' );
         return( didRun );
     },
     
@@ -58,9 +57,9 @@
         //-- handle the save complete
         this.postOffice.addTypeHandler( 'saveComplete', function( myPostMessage ){
             //-- now notify visualforce pages.
+            console.info('VisualforceContainer received event: saveComplete');
+            
             var iFrameTarget=component.find( "targetFrame").getElement();
-
-
 
             if(myPostMessage.data.auraId) {
 
@@ -84,28 +83,14 @@
                     }
                 }
                 else {
-                    // setTimeout(function() {
-                        // console.log('saveComplete refresh to ' + myPostMessage.data.auraId);
-                        // $A.get('e.force:refreshView').fire();
-                    // }, 50);
-                    // component.find('hidden-refresh').getElement().dispatchEvent(new Event('click'));
-                    // $A.getCallback(function() {
-                    //     if (component.isValid()) {
-                            $A.get('e.force:refreshView').fire();
-                    //     }
-                    // });
+                    $A.get('e.force:refreshView').fire();
                 }
             }
         });
         
         this.postOffice.addTypeHandler( 'forceRefresh', function( myPostMessage ){
-            // $A.get('e.force:refreshView').fire();
-            // component.find('hidden-refresh').getElement().dispatchEvent(new Event('click'));
-            // $A.getCallback(function() {
-            //     if (component.isValid()) {
-                    $A.get('e.force:refreshView').fire();
-            //     }
-            // });
+            console.info('VisualforceContainer received event: forceRefresh');
+            $A.get('e.force:refreshView').fire();
             
         	var iFrameTarget = component.find( "targetFrame").getElement()
         	iFrameTarget.src = iFrameTarget.src;            
@@ -113,7 +98,7 @@
 
         //-- handle opening a new tab
         this.postOffice.addTypeHandler( 'openTab', function( myPostMessage ){
-
+            console.info('VisualforceContainer received event: openTab');
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
             ){
@@ -127,13 +112,13 @@
 
         //-- toasts
         this.postOffice.addTypeHandler( 'showToast', function( myPostMessage ){
+            console.info('VisualforceContainer received event: showToast');
 
             if( myPostMessage.data.auraId &&
                 myPostMessage.data.auraId !== component.getGlobalId()
             ){
                 console.log( 'auraId sent and does not match. not sending aura message' );
             } else {
-
                 var toastEvent = $A.get("e.force:showToast");
                 toastEvent.setParams({
                     duration: myPostMessage.data.duration || 5000,
@@ -144,7 +129,6 @@
                     type: myPostMessage.data.type || 'other'
                 });
                 toastEvent.fire();
-
             }
 
         });

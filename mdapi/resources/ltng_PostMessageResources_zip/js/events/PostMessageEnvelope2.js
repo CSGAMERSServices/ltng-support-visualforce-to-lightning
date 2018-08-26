@@ -36,6 +36,7 @@ this.PostMessageEnvelope.prototype.dispatch = function( targetWindow, targetDoma
 	var dataStr = "";
 	var dataClone = JSON.parse(JSON.stringify(this.data));
 	var payload = { sender: this.sender, messageType: this.messageType, isSuccessful: this.isSuccessful, data: dataClone };
+	console.info('PostMessage now posting to the target window');
 	targetWindow.postMessage( payload, targetDomain );
 };
 	

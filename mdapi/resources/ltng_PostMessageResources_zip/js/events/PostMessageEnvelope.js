@@ -32,6 +32,7 @@ class PostMessageEnvelope {
 		var dataStr = "";
 		var payload = { sender: this.sender, messageType: this.messageType, isSuccessful: this.isSuccessful, data: this.data };
 		var payloadStr = JSON.stringify( payload );
+		console.info('PostMessage now posting to the target window');
 		targetWindow.postMessage( payload, targetDomain );
 	}
 	

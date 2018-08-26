@@ -37,7 +37,7 @@
 
             //-- listen for events sent from the canvas app
             Sfdc.canvas.controller.subscribe({ name: 'showToast', onData: function(evt){
-                console.log('event received from canvas');
+                console.log('event received from canvas: showToast');
 
                 var evtMessage = 'Message from heroku';
                 if (evt && evt.message){
@@ -52,8 +52,6 @@
          * Dispatch example postMessage - caught by the VisualforceContainer.
          **/
         function dispatchExampleAuraMessage(evtMessage){
-            console.log('dispatch example aura message');
-
             var messageText = evtMessage;
 
             var pageName = 'ltng <-> visualforce <-> canvas';
@@ -84,6 +82,7 @@
          *  Sets up the PostMessage Listeners
          **/
         function setupPostMessageListeners(){
+            console.info('VisualforceCanvasContainer setting up PostOffice');
             //-- create a PostMessageOffice
             //-- this allows us to accept postMessages dispatched to this window.
             //-- new PostMessageOffice(

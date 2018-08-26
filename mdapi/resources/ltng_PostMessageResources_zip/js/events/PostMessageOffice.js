@@ -26,6 +26,7 @@ this.PostMessageOffice = function( handlerScope ){
 this.PostMessageOffice.prototype.addTypeHandler = function( messageType, handler ){
 	if( messageType ){
 		this.handlers[messageType]=handler;
+		console.info('PostMessageOffice registered to handle messages of type:' + messageType);
 	} else {
 		this.unknownHandler = handler;
 	}
@@ -40,6 +41,7 @@ this.PostMessageOffice.prototype.receiveMessage = function( postMessage ){
 	var myPostMessage = new PostMessageEnvelope();
 	if( myPostMessage.parse(postMessage) ){
 		if( this.handlers.hasOwnProperty( myPostMessage.messageType ) ){
+			console.info('PostMessageOffice caught a message of type:' + myPostMessage.messageType);
 			this.handlers[ myPostMessage.messageType ].call( this.handlerScope, myPostMessage );
 			return( true );
 		} if( this.unknownHandler ){

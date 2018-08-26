@@ -23,7 +23,7 @@ Visualforce communicates with Heroku through Canvas app messages.</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>height</name>
-                <value>600</value>
+                <value>800</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>pageName</name>
