@@ -318,7 +318,6 @@ The [StandardController.save](https://developer.salesforce.com/docs/atlas.en-us.
 
 ![Screenshot of a standard controller losing unsaved changes](docs/images/Vf2Ltng_StandardControllerProblem.gif)
 
-!!! - check
 [See the Standard Controller Page implementation here](dx/force-app/main/default/pages/ltng_VisualforceStandardController.page)
     
 ## Custom Actions do not refresh Standard Components
@@ -343,7 +342,6 @@ This means that the Standard Header and Standard Detail all are showing old valu
 
 ![Problem Statement for L2VF](docs/images/L2VF_ProblemStatement1.jpg)
 
-!!! - check
 [See the custom page implementation](dx/force-app/main/default/pages/ltng_VisualforceWithoutPostMessage.page) and [custom controller implementation](dx/force-app/main/default/classes/ltng_VisualforceWithoutPostMessageCtrl.cls) for more detail.
 
 ---
@@ -567,6 +565,8 @@ Repeat this for as many messageTypes as you would like to handle.
 # Communicating with Lightning Containers
 
 Lightning Containers allow an app developed with a third-party framework as a static resource, so it can be hosted and leveraged using [lightning:container components](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/container_overview.htm).
+
+![Quick Video of Lightning Container communicating with Lightning](docs/images/LightningContainerDemo.gif)
 
 This allows standard html/css/javascript apps to be zipped as a static resource, and then communicated with PostMessages using [the provided lightning-container npm module](https://www.npmjs.com/package/lightning-container)
 
