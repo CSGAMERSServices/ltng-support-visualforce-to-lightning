@@ -59,7 +59,7 @@
 
         var postMessage = new PostMessageEnvelope(
             "ltng_VisualforceWithPostMessage", //-- page name
-            "toast", //-- message type
+            "showToast", //-- message type
             true, //-- save completed
             {
                 "auraId": "{!$CurrentPage.parameters.auraId}",
