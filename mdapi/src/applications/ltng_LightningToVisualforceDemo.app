@@ -11,6 +11,11 @@
     <label>Lightning to Visualforce Demo</label>
     <navType>Standard</navType>
     <tabs>ltng_LightningToVisualforceSetup</tabs>
+    <tabs>ltng_L2VF_DemoRedirector</tabs>
     <tabs>ltng_LightningToVisualforceBase__c</tabs>
+    <tabs>ltng_LightningToVF_ToHeroku</tabs>
+    <tabs>ltng_ContainerComponentDemo</tabs>
+    <tabs>ltng_LightningToCanvas</tabs>
+    <tabs>ltng_FullPageContainerDemo</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

@@ -6,13 +6,20 @@
   </types>
   <types>
     <name>AuraDefinitionBundle</name>
+    <members>ltng_BootstrapComponent</members>
+    <members>ltng_BootstrapContainer</members>
     <members>ltng_DemoCanvasApp</members>
+    <members>ltng_FullBootstrapPage</members>
+    <members>ltng_LightningToCanvas</members>
+    <members>ltng_LightningToVF_BaseRedirector</members>
     <members>ltng_LightningToVisualforceSetup</members>
     <members>ltng_LightningToVisualforceSetupItem</members>
+    <members>ltng_ResponsivePlaceholder</members>
     <members>ltng_VisualforceContainer</members>
   </types>
   <types>
     <name>ApexClass</name>
+    <members>ltng_LightningToVF_BaseRedirectorCtrl</members>
     <members>ltng_LightningToVisualforceSetupCtrl</members>
     <members>ltng_VisualforceWithoutPostMessageCtrl</members>
   </types>
@@ -23,10 +30,18 @@
   <types>
     <name>ContentAsset</name>
     <members>ltng_lightningToVF_AppLogo</members>
-    <members>vfToLightningDemoAppLogo</members>
+  </types>
+  <types>
+    <name>CorsWhitelistOrigin</name>
+    <members>https_demo_nodejs_canvas_app_herokuapp_com</members>
   </types>
   <types>
     <name>FlexiPage</name>
+    <members>ltng_ContainerComponentDemo</members>
+    <members>ltng_FullPageContainerDemo</members>
+    <members>ltng_L2VF_DemoRedirector</members>
+    <members>ltng_LightningToCanvas</members>
+    <members>ltng_LightningToVF_ToHeroku</members>
     <members>ltng_LightningToVisualforceBaseRecordDemo</members>
     <members>ltng_LightningToVisualforceSetup</members>
   </types>
@@ -51,6 +66,7 @@
     <members>ltng_VisualforceStandardController</members>
     <members>ltng_VisualforceWithPostMessage</members>
     <members>ltng_VisualforceWithoutPostMessage</members>
+    <members>ltng_visualforceCanvasContainer</members>
   </types>
   <types>
     <name>PermissionSet</name>
@@ -61,11 +77,21 @@
     <members>ltng_LightningToVisualforceBase__c.RelatedRecordQuickAction</members>
   </types>
   <types>
+    <name>RemoteSiteSetting</name>
+    <members>ltng_HerokuCanvasApp</members>
+  </types>
+  <types>
     <name>StaticResource</name>
     <members>ltng_PostMessageResources</members>
+    <members>ltng_bootstrap_4_1_0</members>
   </types>
   <types>
     <name>CustomTab</name>
+    <members>ltng_ContainerComponentDemo</members>
+    <members>ltng_FullPageContainerDemo</members>
+    <members>ltng_L2VF_DemoRedirector</members>
+    <members>ltng_LightningToCanvas</members>
+    <members>ltng_LightningToVF_ToHeroku</members>
     <members>ltng_LightningToVisualforceBase__c</members>
     <members>ltng_LightningToVisualforceSetup</members>
   </types>

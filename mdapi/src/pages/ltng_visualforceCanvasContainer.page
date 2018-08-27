@@ -1,0 +1,135 @@
+<!--
+/**
+ * Container that demonstrates sending messages between
+ * lightning, visualforce and canvas apps through PostMessages.
+ * @page ltng_visualforceCanvasContainer
+ **/
+-->
+<apex:page
+    lightningStyleSheets="true"
+    sidebar="false" showHeader="false"
+>
+    <!-- post message library for dispatching and rehydrating post messages
+        for more information please see:
+        https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+    -->
+    <apex:includeScript value="{!URLFOR( $Resource.ltng_PostMessageResources,'/js/events/PostMessageEnvelope2.js' )}"/>
+    <!-- post message library for listening and handling PostMessage events -->
+    <apex:includeScript value="{!URLFOR( $Resource.ltng_PostMessageResources,'/js/events/PostMessageOffice.js' )}"/>
+    
+    <!-- canvas api -->
+    <!-- <script type="text/javascript" src="/canvas/sdk/js/39.0/canvas-all.js"></script> -->
+    <script type="text/javascript" src="/canvas/sdk/js/42.0/controller.js"></script>
+	
+    <script type="text/javascript">
+
+        //-- listen for any errors not caught otherwise
+        window.onerror = function(errMsg, url, lineNumber){
+            console.error('uncaught javascript exception found');
+            debugger;
+            return(false);
+        }
+
+        //-- listen for canvas messages from heroku
+        function onCanvasLoad(){
+            console.log('onCanvasLoad');
+            //-- debugger;
+
+            //-- listen for events sent from the canvas app
+            Sfdc.canvas.controller.subscribe({ name: 'showToast', onData: function(evt){
+                console.log('event received from canvas: showToast');
+
+                var evtMessage = 'Message from heroku';
+                if (evt && evt.message){
+                    evtMessage += ':' + evt.message;
+                }
+
+                dispatchExampleAuraMessage(evtMessage);
+            }});
+        }
+
+        /**
+         * Dispatch example postMessage - caught by the VisualforceContainer.
+         **/
+        function dispatchExampleAuraMessage(evtMessage){
+            var messageText = evtMessage;
+
+            var pageName = 'ltng <-> visualforce <-> canvas';
+            var isSuccessful = true;
+            
+            //-- some custom message type. Again, only saveComplete is special/recognized for now.
+            var messageType = 'showToast';
+
+            //-- send the data payload as an object with stuff to return.
+            //-- always include src as some unique identifier for the page
+            var payload = {
+                message: messageText,
+                auraId: '{!$CurrentPage.parameters.auraId}',
+                src: window.location.href
+            };
+
+            payload.auraMessageType='e.force:showToast';
+            payload.auraMessageData={'title': 'Toast Header', 'message':messageText};
+
+            var postMessage = new PostMessageEnvelope(pageName, messageType, isSuccessful, payload);
+
+            postMessage.dispatch(parent);
+        }
+
+        //-- listen for postMessages from lightning
+
+        /**
+         *  Sets up the PostMessage Listeners
+         **/
+        function setupPostMessageListeners(){
+            console.info('VisualforceCanvasContainer setting up PostOffice');
+            //-- create a PostMessageOffice
+            //-- this allows us to accept postMessages dispatched to this window.
+            //-- new PostMessageOffice(
+            //--    @param targetScope:Object - the scope to use as 'this' in the handlers
+            //-- )
+            window.postOffice = new PostMessageOffice(this);
+            
+            //-- handle greeting from lightning
+            //-- register a handler to run when receiving a 'saveComplete' postMessage
+            //-- addTypeHandler(
+            //--    @param messageType:String - the messageType this handler should run for
+            //-- )
+            window.postOffice.addTypeHandler( 'greeting', function( myPostMessage ){
+                //-- now notify visualforce pages.
+                console.info('page heard that the greeting event was given');
+
+                var message = "";
+
+                //-- publish the message to the canvas
+                Sfdc.canvas.client.publish(sr.client,
+                    {name : "greeting", payload : {status : 'Completed', message: 'Hello'}}
+                );
+            });
+            
+            //-- handle the save complete
+            //-- register a handler to run when receiving a 'saveComplete' postMessage
+            //-- addTypeHandler(
+            //--    @param messageType:String - the messageType this handler should run for
+            //-- )
+            window.postOffice.addTypeHandler( 'showToast', function( myPostMessage ){
+                //-- now notify visualforce pages.
+                console.info('page heard that the showToast event was given');
+            });
+            
+            //-- direct the PostMessageOffice to listen for postMessages for a given window
+            //-- listenForPostEvents(
+            //--    @param targetWindow:Window - window to listen for postMessages on
+            //-- )
+            window.postOffice.listenForPostEvents(window);
+        }
+
+        //-- call when the page is ready
+        setupPostMessageListeners();
+    </script>
+    <apex:canvasApp applicationName="ltng_DemoHerokuNodeJS_CanvasApp"
+        namespacePrefix="" onCanvasAppLoad="onCanvasLoad"
+        height="800px" width="100%"
+        parameters="{}"
+    />
+</apex:page>

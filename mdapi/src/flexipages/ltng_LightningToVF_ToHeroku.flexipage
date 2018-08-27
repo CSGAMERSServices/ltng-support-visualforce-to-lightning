@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Sample page that communicates between Lightning to Visualforce to Heroku through PostMessages</description>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;b&gt;&lt;span style=&quot;font-size:18px;&quot;&gt;Lightning to Visualforce to Heroku Demo&lt;/span&gt;&lt;/b&gt;&lt;br /&gt;
+This Lightning Page contains a Visualforce page that contains a Canvas App (Heroku Page).&lt;br /&gt;
+Lightning communicates with Visualforce through PostMessages (using the PostMessageEnvelope/PostMessageOffice)&lt;br /&gt;
+Visualforce communicates with Heroku through Canvas app messages.</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>debug</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>800</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>ltng_visualforceCanvasContainer</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>urlArguments</name>
+            </componentInstanceProperties>
+            <componentName>ltng_VisualforceContainer</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Lightning to VF to Heroku</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

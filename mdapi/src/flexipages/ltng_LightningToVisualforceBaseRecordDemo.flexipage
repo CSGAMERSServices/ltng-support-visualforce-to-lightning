@@ -17,6 +17,92 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;b&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Listen for PostMessages to detect changes&lt;/span&gt;&lt;/b&gt;&lt;br /&gt;
+Sometimes it isn&amp;#39;t helpful to immediately refresh the other tabs.&lt;br /&gt;
+We can send the aura:id to the visualforce page,&lt;br /&gt;
+so when they send the message - we can tell which sent it and which didn&amp;#39;t&lt;br /&gt;
+(and let the user choose when to refresh if another tab saved)&lt;br /&gt;
+&lt;b&gt;... Go ahead and save a change on the VF PostMessage tab - and come back here.&lt;/b&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>debug</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>600</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>ltng_VisualforceWithPostMessage</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>urlArguments</name>
+            </componentInstanceProperties>
+            <componentName>ltng_VisualforceContainer</componentName>
+        </componentInstances>
+        <name>Facet-74b54575-acf8-44a8-a597-0084684cffbb</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;b&gt;Visualforce page with custom controller / PostMessage dispatch.&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
+After save, we dispatch a PostMessage in the Visualforce Page, and receive it in the Lightning Component.&lt;br /&gt;
+The Lightning component then&amp;nbsp;dispatches a &lt;a href=&quot;https://developer.salesforce.com/docs/component-library/bundle/force:refreshView/specification&quot;&gt;refreshView lightning event&lt;/a&gt;.&lt;br /&gt;
+(This special event is listened for by all standard components, to know when they should refresh)</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>debug</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>600</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>ltng_VisualforceWithPostMessage</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>urlArguments</name>
+            </componentInstanceProperties>
+            <componentName>ltng_VisualforceContainer</componentName>
+        </componentInstances>
+        <name>Facet-c896f7f3-8748-4811-a6f6-e9cdd7f8ecf6</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;b&gt;Standard Detail&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
+This is the standard page layout for the record</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
         <name>Facet-ded339c7-2bea-444d-aafd-3da5a0ce1566</name>
@@ -30,7 +116,7 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>richTextValue</name>
-                <value>Visualforce page with a Standard Controller.&lt;br /&gt;
+                <value>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;b&gt;Visualforce page with a Standard Controller.&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
 Note that the header and entire page is consistent after save,&lt;br /&gt;
 but at the cost of EVERYTHING refreshing (and potentially losing unsaved work on other tabs)</value>
             </componentInstanceProperties>
@@ -65,7 +151,7 @@ but at the cost of EVERYTHING refreshing (and potentially losing unsaved work on
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>richTextValue</name>
-                <value>Visualforce page using a custom controller extension.&lt;br /&gt;
+                <value>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;b&gt;Visualforce page using a custom controller extension.&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
 This allows us to avoid the refresh at the end of the save,&lt;br /&gt;
 but this means that the standard info is no longer consistent.</value>
             </componentInstanceProperties>
@@ -95,62 +181,34 @@ but this means that the standard info is no longer consistent.</value>
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>decorate</name>
+                <name>active</name>
                 <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>richTextValue</name>
-                <value>Visualforce page with custom controller and onComplete - PostMessage dispatch.&lt;br /&gt;
-After save, we dispatch a PostMessage in the Visualforce Page, and receive in the Lightning Component&lt;br /&gt;
-to then dispatch a &lt;a href=&quot;https://developer.salesforce.com/docs/component-library/bundle/force:refreshView/specification&quot;&gt;refreshView lightning event&lt;/a&gt;.&lt;br /&gt;
-(This special event is listened for by all standard components, to know when they should refresh)</value>
+                <name>body</name>
+                <value>Facet-74b54575-acf8-44a8-a597-0084684cffbb</value>
             </componentInstanceProperties>
-            <componentName>flexipage:richText</componentName>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Detect Changes</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
-                <name>debug</name>
-                <value>true</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>height</name>
-                <value>600</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>pageName</name>
-                <value>ltng_VisualforceWithPostMessage</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>urlArguments</name>
-            </componentInstanceProperties>
-            <componentName>ltng_VisualforceContainer</componentName>
-        </componentInstances>
-        <name>Facet-fa7a3b5e-ab1d-4802-9b94-85bd3a285497</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>debug</name>
+                <name>active</name>
                 <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>height</name>
-                <value>600</value>
+                <name>body</name>
+                <value>Facet-c896f7f3-8748-4811-a6f6-e9cdd7f8ecf6</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>pageName</name>
-                <value>ltng_VisualforceWithPostMessage</value>
+                <name>title</name>
+                <value>VF PostMessage</value>
             </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>urlArguments</name>
-            </componentInstanceProperties>
-            <componentName>ltng_VisualforceContainer</componentName>
+            <componentName>flexipage:tab</componentName>
         </componentInstances>
-        <name>Facet-a0f5d1c4-2ad5-4ad1-88cb-0563f2855d66</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
                 <name>body</name>
@@ -181,28 +239,6 @@ to then dispatch a &lt;a href=&quot;https://developer.salesforce.com/docs/compon
             <componentInstanceProperties>
                 <name>title</name>
                 <value>VF No Refresh</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-fa7a3b5e-ab1d-4802-9b94-85bd3a285497</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>VF PostMessage</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-a0f5d1c4-2ad5-4ad1-88cb-0563f2855d66</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>VF PostMessage</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>

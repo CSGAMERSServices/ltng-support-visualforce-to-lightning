@@ -19,7 +19,9 @@
     <label>Demo Heroku NodeJS Canvas App</label>
     <oauthConfig>
         <callbackUrl>https://demo-nodejs-canvas-app.herokuapp.com/callback</callbackUrl>
-        <consumerKey>3MVG9U_dUptXGpYI4288SBcTP2XvnSK6_5BVO_kRIunfXFG0zIiDlH4dNmc6ltLVMcA6H1Pz4kIMJXn9z0dQh</consumerKey>
         <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>CustomPermissions</scopes>
     </oauthConfig>
 </ConnectedApp>

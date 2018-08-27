@@ -1,0 +1,30 @@
+<!--
+/**
+* Canvas App to demonstrate communicating with heroku.
+* @component: ltng_LightningToVF_Canvas
+**/
+-->
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride"
+    access="global"
+>
+    <!-- attributes -->
+    <!-- private attributes -->
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- events -->
+    <!-- scripts -->
+    <!--
+    <ltng:require 
+        scripts="/canvas/sdk/js/42.0/controller.js"
+        afterScriptsLoaded="{!c.scriptsLoaded}"
+    />
+	-->
+    <!-- elements -->
+    <force:canvasApp developerName="ltng_DemoHerokuNodeJS_CanvasApp"
+        width="100%"
+        onCanvasAppLoad="{!c.handleCanvasAppLoad}"
+        onCanvasSubscribed="{!c.handleCanvasSubscribed}"
+        onCanvasAppError="{!c.handleCanvasAppError}"
+    />
+</aura:component>

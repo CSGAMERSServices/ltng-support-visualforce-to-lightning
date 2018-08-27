@@ -1,0 +1,24 @@
+<!--
+/**
+ * Lightning Component that leverages Bootstrap.
+ * <p>While this will work, it will fail a security review.</p>
+ * @component ltng_BootstrapComponent
+ **/
+-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global"
+>
+	<!-- attributes -->
+    <!-- handlers -->
+    <!-- events -->
+    <!-- elements -->
+    <ltng:require styles="{!$Resource.ltng_bootstrap_4_1_0 + '/bootstrap/css/bootstrap.min.css'}"
+        scripts="{!join(',',
+        	$Resource.ltng_bootstrap_4_1_0,'/bootstrap/jquery/jquery-3.3.1.min.js',
+        	$Resource.ltng_bootstrap_4_1_0,'/bootstrap/js/bootstrap.min.js')}"
+        afterScriptsLoaded="{!c.scriptsLoaded}"
+    />
+    <div role="main">
+        <p>Component</p>
+    </div>
+</aura:component>

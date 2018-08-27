@@ -30,7 +30,7 @@
      *  Handler for when all associated scripts have finished loading
      **/
     handleScriptsLoaded: function( component, event, helper ){
-        console.log( 'handleScripts loaded attempted' );
+        console.log( 'VisualforceContainer: all scripts loaded' );
 		helper.onetimeSetup(component, helper);
     }
     

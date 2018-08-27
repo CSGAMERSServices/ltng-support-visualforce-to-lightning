@@ -1,0 +1,22 @@
+<!--
+/**
+ * Responsive placeholder container that displays as a rounded box.
+ * @component ltng_ResponsivePlaceholder
+ **/
+-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+	access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="placeholderText" type="String" default="Placeholder" />
+    <aura:attribute name="classCode" type="String" />
+    <aura:attribute name="styleCode" type="String" />
+    <aura:attribute name="theme" type="String" />
+    <aura:attribute name="cmpHeight" type="Integer" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- elements -->
+    <div class='{!v.classCode}' style='{!v.styleCode}'>
+        {!v.placeholderText}
+    </div>
+</aura:component>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Full page demo for a Bootstrap Container</description>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;b&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Full Page &lt;a href=&quot;https://developer.salesforce.com/blogs/2018/04/lightning-container-component-building-components-with-react-angular-and-other-libraries.html&quot;&gt;Lightning:Container&lt;/a&gt; Example&lt;/span&gt;&lt;/b&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>containerSize</name>
+                <value>800</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>helloName</name>
+                <value>Hello, from Lightning</value>
+            </componentInstanceProperties>
+            <componentName>ltng_BootstrapContainer</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Full Page Container Demo</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>
