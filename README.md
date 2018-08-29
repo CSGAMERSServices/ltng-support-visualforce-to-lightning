@@ -742,65 +742,6 @@ There are three methods available for you to install this demo, so you can play 
 * [Install Demo via Salesforce CLI](#install-via-salesforce-cli)
 * [Install Demo via Ant/Metadata API](#install-via-metadata-api)
 
-## Install via URL
-
-This works very similar to an App Exchange install.
-
-Please login to an available sandbox and click the link below.
-
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sreiQAA](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sreiQAA)
-
-(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0= 04t6A000002sreiQAA` <br />
-if you are already logged in)
-
-![Install for Admins](docs/images/installPackage.png)
-
-It is recommended to install for Admins Only (but all options will work)
-
-##### Run Demo Setup
-
-Next, click on the 'dice' and open the 'URL Hack Demo' app.
-
-![URL Hack Demo App](docs/images/appInLauncher.png)
-
-and run `Setup` from the `URL Hack Demo Setup` tab.
-
-![URL Hack Demo Setup](docs/images/demoSetup1.png)
-
-This will then perform any additional setup (such as creating records, etc).
-
-##### Run the Demos
-
-Thats it, all information should be avaiable for running all demos now from the `URL Hack Bases` tab.
-
-Feel free to create your own and to create children through the QuickActions, Lightning Actions or List View buttons.
-
-#### -- Known Issue -- Add the missing permissions on the permission set
-
-If you get an error saying 'This record is not available' (when creating records),
-you are likely affectd by a known issue with Unlocked Package deploys.
-
-(This is also mentioned from the Setup page)
-
-We are working with different teams, but it appears as though the installation works correctly from Salesforce CLI, but requires additional steps from the insllation URL.
-
-**We appologize for this inconvenience and are working towards correcting it**
-
-**1.** Navigate to the 'Dependent Picklist Demo' app
-
-![Find Permission Set](docs/images/appInLauncher.png)
-
-**2.** Navigate to the 'Dependent Picklist Demo Setup' page
-
-![Dependent Picklist Demo page](docs/images/correctPermissionSet.png)
-
-and click on the link **Add the 'Master', 'Type A' and 'Type B' record types to the permission set'**
-
-This will navigate you to the permission set in your org.
-
-**3.** Click edit and enable the record types for that permission set.
-
-![Add record types to permission set](docs/images/correctPermissionSet2.png)
 
 ## Installing via the Salesforce CLI
 
@@ -825,4 +766,26 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 Thats it, you can now open the org, and find the 'ticket' object in the 'all tabs' search.
 
 	sfdx force:org:open -u [[orgAlias]]
+
+##### Run Demo Setup
+
+Next, click on the 'dice' and open the 'URL Hack Demo' app.
+
+![URL Hack Demo App](docs/images/appInLauncher.png)
+
+and run `Setup` from the `URL Hack Demo Setup` tab.
+
+![URL Hack Demo Setup](docs/images/demoSetup1.png)
+
+This will then perform any additional setup (such as creating records, etc).
+
+##### Run the Demos
+
+Thats it, all information should be avaiable for running all demos now from the `URL Hack Bases` tab.
+
+* L2VF Demo Redirector - Demonstrates the common issue of using Standard Visualforce in Lightning Experience - resulting in data coming out of sync. <br /> (For more information, please see the [Communicating with PostMessages section above](https://github.com/SalesforceCloudServices/ltng-support-visualforce-to-lightning#communicating-with-postmessages))
+
+* Lightning to VF to Heroku - demos showing a heroku page in lightning - with a seamless appearance in lightning experience. (Even demos sending a Lightning message from Heroku)
+
+* Container Component Demo - demos a common web standard application seamlessly in lightning experienc (bootstrap with html/css/js/etc here, but same works for angular / react / vue / etc.)
 	
