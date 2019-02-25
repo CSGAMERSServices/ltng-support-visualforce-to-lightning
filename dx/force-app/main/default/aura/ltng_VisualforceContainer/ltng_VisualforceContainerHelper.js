@@ -1,6 +1,5 @@
+/* globals PostMessageOffice */
 ({
-    //-- @TODO: include more code comments on how this can be called.
-
     /**
      *  Determines the SRC address for the Visualforce page.
      *  @param pageName (String) - name of the visualforce page to load
@@ -30,21 +29,28 @@
      **/
     onetimeSetup: function( component, helper){
         //-- only setup an event listener once for this component.
-        console.log( 'VisualForceContainer onetimeSetup' );
+        helper.log( 'VisualForceContainer onetimeSetup' );
         
         var didRun=false;
         
         if( component.get('v.setupComplete') === false ){
-            console.log( 'init and code all loaded' );
+            helper.log( 'init and code all loaded' );
             
             //-- this will only run once
             helper.setupPostMessageListeners(component, helper);
             
-            component.set('v.setupComplete',true);
+            component.set('v.setupComplete', true);
             didRun=true;
         }
         
         return( didRun );
+    },
+
+    matchesPostMessageAuraId : function(component, helper, myPostMessage) {
+        return(
+            myPostMessage.data.auraId &&
+            myPostMessage.data.auraId === component.getGlobalId()
+        );
     },
     
     /**
@@ -56,69 +62,49 @@
         
         //-- handle the save complete
         this.postOffice.addTypeHandler( 'saveComplete', function( myPostMessage ){
-            //-- now notify visualforce pages.
-            console.info('VisualforceContainer received event: saveComplete');
-            
-            var iFrameTarget=component.find( "targetFrame").getElement();
+            // var iFrameTarget=component.find( "targetFrame").getElement();
 
-            if(myPostMessage.data.auraId) {
+            if (helper.matchesPostMessageAuraId(component, helper, myPostMessage)) {
+                helper.log('VisualforceContainer received event from contained vf page:saveComplete');
+                $A.get('e.force:refreshView').fire();
+            } else {
+                helper.log('VisualforceContainer received saveComplete event from another iFrame/window');
 
-                console.log('saveComplete received');
-
-                if (myPostMessage.data.auraId !== component.getGlobalId()) {
-
-                    // $A.get('e.force:refreshView').fire();
-                    // fake click button
-                    
-                	//-- tell the other pages
-                	myPostMessage.dispatch( iFrameTarget.contentWindow );
-                    
-                    var btn0 = component.find("refresh-button");
-                    if (btn0) {
-                        var btn = btn0.getElement();
-                    
-                        if(btn) {
-                        	btn.style.display = 'block'; 
-                        }
+                //-- tell the other pages
+                // myPostMessage.dispatch( iFrameTarget.contentWindow );
+                
+                //-- show the notify button
+                var btn0 = component.find("refresh-button");
+                if (btn0) {
+                    var btn = btn0.getElement();
+                
+                    if(btn) {
+                        btn.style.display = 'block';
                     }
-                }
-                else {
-                    $A.get('e.force:refreshView').fire();
                 }
             }
         });
         
         this.postOffice.addTypeHandler( 'forceRefresh', function( myPostMessage ){
-            console.info('VisualforceContainer received event: forceRefresh');
-            $A.get('e.force:refreshView').fire();
-            
-        	var iFrameTarget = component.find( "targetFrame").getElement()
-        	iFrameTarget.src = iFrameTarget.src;            
+            if (helper.matchesPostMessageAuraId(component, helper, myPostMessage)) {
+                helper.info('VisualforceContainer received event: forceRefresh');
+                $A.get('e.force:refreshView').fire();
+            }
         });
 
         //-- handle opening a new tab
         this.postOffice.addTypeHandler( 'openTab', function( myPostMessage ){
-            console.info('VisualforceContainer received event: openTab');
-            if( myPostMessage.data.auraId &&
-                myPostMessage.data.auraId !== component.getGlobalId()
-            ){
-                console.log( 'auraId sent and does not match. not sending aura message' );
-            } else {
-
+            if (helper.matchesPostMessageAuraId(component, helper, myPostMessage)) {
+                helper.info('VisualforceContainer received event: openTab');
                 window.open(myPostMessage.data.src, '_blank');
-
             }
         });
 
         //-- toasts
         this.postOffice.addTypeHandler( 'showToast', function( myPostMessage ){
-            console.info('VisualforceContainer received event: showToast');
-
-            if( myPostMessage.data.auraId &&
-                myPostMessage.data.auraId !== component.getGlobalId()
-            ){
-                console.log( 'auraId sent and does not match. not sending aura message' );
-            } else {
+            if (helper.matchesPostMessageAuraId(component, helper, myPostMessage)) {
+                helper.info('VisualforceContainer received event: showToast');
+                
                 var toastEvent = $A.get("e.force:showToast");
                 toastEvent.setParams({
                     duration: myPostMessage.data.duration || 5000,
@@ -135,21 +121,15 @@
         
         //-- handle any unknown types of events
         this.postOffice.addTypeHandler( null, function( myPostMessage ){
-            //-- now notify visualforce pages.
             var iFrameTarget=component.find( "targetFrame").getElement();
             
-            console.log( "YAY, vf event in lightning" );
-            
-            if( typeof myPostMessage.data.auraMessageType !== 'undefined' &&
-               myPostMessage.data.auraMessageType
-            ){
-               
-                if( myPostMessage.data.auraId &&
-                    myPostMessage.data.auraId !== component.getGlobalId()
+            if (helper.matchesPostMessageAuraId(component, helper, myPostMessage)) {
+                helper.info('VisualforceContainer received unknown messageType:', myPostMessage.messageType);
+                
+                if( typeof myPostMessage.data.auraMessageType !== 'undefined' &&
+                    myPostMessage.data.auraMessageType
                 ){
-                    console.log( 'auraId sent and does not match. not sending aura message' );
-                } else {
-                    var auraMessageData = {} || myPostMessage.data.auraMessageData;
+                    // var auraMessageData = {} || myPostMessage.data.auraMessageData;
                     //console.log( 'Aura message:' + myPostMessage.data.auraMessageType );
                     //console.log( 'Aura data:' ); console.log( myPostMessage.data.auraMessageData );
                     
@@ -158,12 +138,17 @@
                     appEvent.setParams(myPostMessage.data.auraMessageData);
                     appEvent.fire();
                 }
+
+                //-- tell the contained page
+                myPostMessage.dispatch( iFrameTarget.contentWindow );
             }
-            
-            //-- tell the other pages.
-            myPostMessage.dispatch( iFrameTarget.contentWindow );
         });
         
         this.postOffice.listenForPostEvents(window);
-    }
+    },
+  
+    log : function(msg){console.log.apply(this, arguments);}, // eslint-disable-line
+    warn : function(msg){console.warn.apply(this, arguments);}, // eslint-disable-line
+    error : function(msg){console.error.apply(this, arguments);}, // eslint-disable-line
+    noop : function(){}
 })

@@ -30,12 +30,7 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>richTextValue</name>
-                <value>&lt;b&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Listen for PostMessages to detect changes&lt;/span&gt;&lt;/b&gt;&lt;br /&gt;
-Sometimes it isn&amp;#39;t helpful to immediately refresh the other tabs.&lt;br /&gt;
-We can send the aura:id to the visualforce page,&lt;br /&gt;
-so when they send the message - we can tell which sent it and which didn&amp;#39;t&lt;br /&gt;
-(and let the user choose when to refresh if another tab saved)&lt;br /&gt;
-&lt;b&gt;... Go ahead and save a change on the VF PostMessage tab - and come back here.&lt;/b&gt;</value>
+                <value>&lt;p&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Listen for PostMessages to detect changes&lt;/b&gt;&lt;/p&gt;&lt;p&gt; Sometimes it isn&#39;t helpful to immediately refresh the other tabs.&lt;/p&gt;&lt;p&gt; We can send the aura:id to the visualforce page,&lt;/p&gt;&lt;p&gt; so when they send the message - we can tell which sent it and which didn&#39;t&lt;/p&gt;&lt;p&gt; (and let the user choose when to refresh if another tab saved)&lt;/p&gt;&lt;p&gt;&lt;b&gt;... Go ahead and save a change on the VF PostMessage tab - and come back here.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;... or update in the inline VF page within the Details tab.&lt;/b&gt;&lt;/p&gt;</value>
             </componentInstanceProperties>
             <componentName>flexipage:richText</componentName>
         </componentInstances>
@@ -97,6 +92,17 @@ The Lightning component then&amp;nbsp;dispatches a &lt;a href=&quot;https://deve
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;p&gt;Because we have a Visualforce page within the Page Layout, there is no wrapper to catch PostMessages.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;So the Default Post Message Handler component (hidden in the header) can listen instead.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;(Note: the Default Post Message Handler responds to auraId of &#39;default&#39;)&lt;/b&gt;&lt;/p&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
                 <name>decorate</name>

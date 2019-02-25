@@ -99,11 +99,7 @@
         //-- handle the save complete
         this.postOffice.addTypeHandler( 'saveComplete', $A.getCallback(function( myPostMessage ){
             if( helper.isPostMessageTarget( component, helper, myPostMessage ) ){
-                if (!helper.isEchoedMessage(component, helper, myPostMessage)) {
-                    helper.echoPostMessage(component, helper, myPostMessage);
-                } else {
-                    $A.get('e.force:refreshView').fire();
-                }
+                $A.get('e.force:refreshView').fire();
             }
         }));
 

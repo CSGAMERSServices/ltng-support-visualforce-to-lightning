@@ -28,12 +28,18 @@
         //-- )
         //-- the ltngVisualforceContainer lightning component then accepts it
 
+        //-- use the aura id sent from the component / vf parameter
+        var auraId = "{!$CurrentPage.parameters.auraId}";
+        if (!auraId) {
+            auraId = 'default';
+        }
+
         var postMessage = new PostMessageEnvelope(
             "ltng_VisualforceWithPostMessage", //-- page name
             "saveComplete", //-- message type
             true, //-- save completed
             {
-                "auraId": "{!$CurrentPage.parameters.auraId}" //-- pass auraId if we want other tabs to know when to refresh
+                "auraId": auraId //-- pass auraId if we want other tabs to know when to refresh
             }
         );
         

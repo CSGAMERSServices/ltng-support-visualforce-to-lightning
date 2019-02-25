@@ -1,28 +1,51 @@
 # Overview
 
+The Salesforce Lightning Experience provides ways to leverage standard functionality with customization in ways never before possible with classic.
+
+This app is a demo for how you can integrate:
+
+* Standard (OotB) Lightning Components to Custom Lightning Components
+* Lightning with Visualforce
+* Lightning with Web Standard Single Page Apps (e.g. Angular / React / Vue /...)
+* Lightning with Canvas apps
+
 Another way that the Lightning Experience is an architectural shift from Salesforce Classic is how Customizations and Standard functionality can communicate with one another securely in the browser.
 
 `(Please note that system to system communications are in a separate example)`
 
-**1.** Standard and Custom Lightning Components can call to one another using Lightning Events.
+## 1. Standard and Custom Lightning Components can call to one another using Lightning Events
+
+I have custom lightning components....  How can I send data and events back and forth so data and messages can be sent securely between them. 
+
+Custom lightning components can communicate with standard lightning functionality - requiring less work while providing better standardization and a more cohesive experience than possible with classic.
 
 ![Quick Video of Custom and Standard Components using Events](docs/images/ticket-button-demo.gif)
 
 For more on this case please see the [Communicating between Custom and Standard Components Section below](#communicating-between-custom-and-standard-components).
 
-**2.** Lightning Experience and Visualforce Pages can communicate with one another using PostMessages.
+## 2. Lightning Experience and Visualforce Pages can communicate with one another using PostMessages
+
+Visualforce can communicate with standard lightning functionality  - requiring less work while providing better standardization and a more cohesive experience than with classic.
 
 ![Quick Video of Lightning to VF Communication](docs/images/LightningToVF_CommunicationDemo.gif)
 
 For more on this case, please see the [Communicating with PostMessages section below](#communicating-with-postmessages)
 
-**3.** Lightning Experience can expose Bundled Web Apps (within Static Resources) can communicate via Lightning:Contianer messages.
+## 3. Lightning Experience can expose Bundled Web Apps (within Static Resources) can communicate via Lightning:Contianer messages
+
+Lightning container apps can communicate with standard lightning functionality - leveraging standard HTML5 apps (html/javascript/css) in ways you could never do before with classic.
 
 ![Quick Video of Lightning Container communicating with Lightning](docs/images/LightningContainerDemo.gif)
 
 For more on this case, see the [Communicating with Lightning Containers section below](#communicating-with-lightning-containers)
 
-**4.** Lightning Experience can expose External Web Sites and communicate via Canvas messages.
+## 4. Lightning Experience can expose External Web Sites and communicate via Canvas messages.
+
+Canvas Apps are a way to expose out External Web sites within a secured frame (authenticated and authorized) within Salesforce.  Allowing them to communicate securely in a way completely transparent to the end user.
+
+Canvas apps can communicate with standard lightning functionality - requiring less work while providing better standardization and a more cohesive experience than possible with classic.
+
+!!! I have a legacy external web application.  How can I integrate it with Salesforce Lightning, so it incorporates my legacy application into Lightning Experience so data and messages can be securely shared between them. 
 
 ![Quick Video sending messages from Heroku to Lightning using Canvas Messages](docs/images/LightningToVF_ToHeroku.gif)
 
