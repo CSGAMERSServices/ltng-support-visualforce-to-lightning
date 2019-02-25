@@ -1,7 +1,7 @@
 //-- @TODO: separate out to a separate file
 /**
  *  Helper function for calling remoting methods
- *  ex: remotingHelper( 'TEST_POstMessageParent_C.calculateSomething', 1,1,2, successFunction, failureFunction );
+ *  ex: remotingHelper( 'TEST_PostMessageParent_C.calculateSomething', 1,1,2, successFunction, failureFunction );
  *  @param remoting function name - Class.Remoting Method - i.e. TEST_PostMessageParent_C.getMessage
  *  @param [any additional arguments to remoting call]
  *  @param function successHandler - always the first arguent

@@ -12,6 +12,13 @@
             </componentInstanceProperties>
             <componentName>force:highlightsPanel</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>respondingAuraId</name>
+                <value>default</value>
+            </componentInstanceProperties>
+            <componentName>ltng_DefaultPostMessageHandler</componentName>
+        </componentInstances>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>

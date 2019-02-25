@@ -1,0 +1,3 @@
+<design:component label='General Post Message Handler'>
+    <design:attribute name='respondingAuraId' label='Respond only if auraId is sent and matches' default='default' />
+</design:component>

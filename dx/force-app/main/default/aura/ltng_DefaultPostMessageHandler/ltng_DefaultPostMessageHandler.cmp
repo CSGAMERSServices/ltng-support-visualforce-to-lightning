@@ -1,0 +1,28 @@
+<!--
+/**
+* For the times where we need to communicate between VisualForce and Lightning
+* but we can't use the ltng_VisualforceContainer.
+**/
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+    access="global"
+>
+    <!-- setup -->
+    <aura:attribute name="setupComplete" type='Boolean' default='false' access='public' />
+    <aura:attribute name="respondingAuraId" type="string" default="default" access="public" />
+    
+    <!-- scripts -->
+    <ltng:require scripts="{! join(',',
+            $Resource.ltng_PostMessageResources+'/js/events/PostMessageEnvelope2.js',
+            $Resource.ltng_PostMessageResources+'/js/events/PostMessageOffice.js',
+            $Resource.ltng_PostMessageResources+'/js/navigation/LightningSafeNavigation.js',
+            '/support/console/42.0/integration.js'
+        )}"
+    	afterScriptsLoaded='{!c.handleScriptsLoaded}'
+    />
+    
+    <!-- handlers -->
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}' />
+    <!-- workspace -->
+    <lightning:workspaceAPI aura:id="workspace"/>
+</aura:component>
