@@ -1,5 +1,6 @@
-<design:component >
+<design:component label="Responsive Placeholder">
     <design:attribute name="placeholderText" label="Text" description="Inner text of placeholder" />
+    <design:attribute name="placeholderDescription" label="Description" description="TextArea Description of the placeholder" />
     <design:attribute name="theme" label="Theme" description="SLDS Theme"
     	default="default" datasource="default,shade,inverse,alt-inverse,theme_success,theme_info,theme_warning,theme_error,theme_offline,theme_alert-texture"
     />

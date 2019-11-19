@@ -4,11 +4,13 @@
  * @component ltng_ResponsivePlaceholder
  **/
 -->
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
 	access="global"
 >
     <!-- attributes -->
     <aura:attribute name="placeholderText" type="String" default="Placeholder" />
+    <aura:attribute name="placeholderDescription" type="String" default="" />
     <aura:attribute name="classCode" type="String" />
     <aura:attribute name="styleCode" type="String" />
     <aura:attribute name="theme" type="String" />
@@ -17,6 +19,13 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <!-- elements -->
     <div class='{!v.classCode}' style='{!v.styleCode}'>
-        {!v.placeholderText}
+        <div class='placeholder-text slds-align_absolute-center slds-text-heading_medium'>
+            {!v.placeholderText}
+        </div>
+        <aura:if isTrue="{!not(empty(v.placeholderDescription))}">
+        	<div class='placeholder-description slds-align_absolute-center'>
+            	{!v.placeholderDescription}
+            </div>
+        </aura:if>
     </div>
 </aura:component>
